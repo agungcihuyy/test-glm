@@ -104,7 +104,7 @@ export default function Hero({ ready }) {
           <div className="lanyard">
             <Badge3D />
             <span className="lanyard__hint">
-              Seret kartunya — fisika 3D real-time
+              Seret / ketuk kartunya — fisika 3D real-time
             </span>
           </div>
         </Suspense>
