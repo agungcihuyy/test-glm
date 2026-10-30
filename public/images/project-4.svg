@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#e9e2d2"/>
+  <!-- masonry gallery -->
+  <rect x="60" y="60" width="220" height="260" fill="#16140f"/>
+  <path d="M60 320 L160 200 L220 260 L280 160 L280 320 Z" fill="#a49a82"/>
+  <circle cx="130" cy="130" r="26" fill="#d9d0ba"/>
+  <rect x="300" y="60" width="160" height="180" fill="#16140f"/>
+  <path d="M300 240 L340 170 L390 220 L460 130 L460 240 Z" fill="#6e6752"/>
+  <rect x="480" y="60" width="260" height="120" fill="#16140f"/>
+  <rect x="504" y="84" width="120" height="70" fill="#3d382d"/>
+  <circle cx="690" cy="120" r="26" fill="#e8e1d0"/>
+  <!-- big block -->
+  <rect x="300" y="260" width="440" height="180" fill="#16140f"/>
+  <rect x="330" y="290" width="220" height="14" fill="#e8e1d0"/>
+  <rect x="330" y="318" width="160" height="14" fill="#9c9179"/>
+  <rect x="330" y="370" width="140" height="10" fill="#443f33"/>
+  <rect x="330" y="394" width="110" height="10" fill="#443f33"/>
+  <!-- small block -->
+  <rect x="60" y="340" width="220" height="100" fill="#16140f"/>
+  <path d="M60 440 L110 370 L150 410 L200 350 L240 440 L60 440 Z" fill="#9c9179"/>
+  <line x1="60" y1="466" x2="740" y2="466" stroke="#b3a98e" stroke-width="1.5"/>
+</svg>

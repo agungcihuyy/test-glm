@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="760" viewBox="0 0 600 760">
+  <rect width="600" height="760" fill="#1d1b16"/>
+  <rect x="24" y="24" width="552" height="712" fill="none" stroke="#3a362c" stroke-width="1.5"/>
+  <!-- silhouette -->
+  <ellipse cx="300" cy="315" rx="108" ry="122" fill="#3d382d"/>
+  <path d="M110 760 C110 610 190 545 300 545 C410 545 490 610 490 760 Z" fill="#332f26"/>
+  <path d="M110 760 C110 610 190 545 300 545 C410 545 490 610 490 760" fill="none" stroke="#4a4536" stroke-width="1.5"/>
+  <!-- subtle shapes -->
+  <circle cx="132" cy="120" r="3.5" fill="#a49a82"/>
+  <circle cx="468" cy="640" r="3.5" fill="#a49a82"/>
+  <path d="M40 40 h28 M40 40 v28" stroke="#6e6752" stroke-width="2"/>
+  <path d="M560 720 h-28 M560 720 v-28" stroke="#6e6752" stroke-width="2"/>
+  <text x="300" y="712" text-anchor="middle" font-family="monospace" font-size="13" letter-spacing="4" fill="#8b8370">FOTO PROFIL · 600 × 760</text>
+  <text x="300" y="736" text-anchor="middle" font-family="monospace" font-size="11" letter-spacing="3" fill="#5f5946">GANTI DENGAN FOTO ANDA</text>
+</svg>

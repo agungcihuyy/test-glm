@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#efe8da"/>
+  <!-- editorial lines -->
+  <rect x="80" y="70" width="380" height="26" fill="#16140f"/>
+  <rect x="80" y="112" width="300" height="26" fill="#16140f"/>
+  <rect x="80" y="154" width="180" height="26" fill="#9c9179"/>
+  <rect x="80" y="215" width="440" height="8" fill="#c9bfa6"/>
+  <rect x="80" y="238" width="400" height="8" fill="#c9bfa6"/>
+  <rect x="80" y="261" width="420" height="8" fill="#c9bfa6"/>
+  <rect x="80" y="284" width="260" height="8" fill="#c9bfa6"/>
+  <!-- book block -->
+  <rect x="420" y="300" width="90" height="120" fill="#16140f"/>
+  <rect x="436" y="316" width="58" height="70" fill="#efe8da"/>
+  <!-- photo frame right -->
+  <rect x="560" y="70" width="180" height="230" fill="#16140f"/>
+  <circle cx="650" cy="150" r="42" fill="#d9d0ba"/>
+  <path d="M590 300 C600 240 630 220 650 220 C675 220 700 245 710 300 Z" fill="#d9d0ba"/>
+  <!-- footer -->
+  <rect x="80" y="400" width="640" height="1.5" fill="#b3a98e"/>
+  <rect x="80" y="424" width="120" height="12" fill="#16140f"/>
+  <rect x="600" y="424" width="120" height="12" fill="#9c9179"/>
+</svg>

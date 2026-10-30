@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#1c1a15"/>
+  <!-- browser bar -->
+  <rect x="70" y="60" width="660" height="40" fill="#26231c"/>
+  <circle cx="96" cy="80" r="6" fill="#4a4536"/>
+  <circle cx="116" cy="80" r="6" fill="#3a362a"/>
+  <circle cx="136" cy="80" r="6" fill="#3a362a"/>
+  <rect x="320" y="70" width="220" height="20" rx="10" fill="#332f25"/>
+  <!-- product grid -->
+  <g>
+    <rect x="90" y="130" width="180" height="150" fill="#26231c"/>
+    <rect x="110" y="150" width="140" height="70" fill="#332f25"/>
+    <circle cx="150" cy="185" r="22" fill="#a49a82"/>
+    <rect x="110" y="232" width="100" height="10" fill="#6e6752"/>
+    <rect x="110" y="250" width="60" height="10" fill="#4a4536"/>
+  </g>
+  <g>
+    <rect x="310" y="130" width="180" height="150" fill="#26231c"/>
+    <rect x="330" y="150" width="140" height="70" fill="#332f25"/>
+    <rect x="368" y="163" width="64" height="44" fill="#e8e1d0"/>
+    <rect x="330" y="232" width="100" height="10" fill="#6e6752"/>
+    <rect x="330" y="250" width="60" height="10" fill="#4a4536"/>
+  </g>
+  <g>
+    <rect x="530" y="130" width="180" height="150" fill="#26231c"/>
+    <rect x="550" y="150" width="140" height="70" fill="#332f25"/>
+    <path d="M560 205 L595 170 L625 195 L665 160" stroke="#a49a82" stroke-width="3" fill="none"/>
+    <rect x="550" y="232" width="100" height="10" fill="#6e6752"/>
+    <rect x="550" y="250" width="60" height="10" fill="#4a4536"/>
+  </g>
+  <!-- footer strip -->
+  <rect x="90" y="310" width="620" height="10" fill="#332f25"/>
+  <rect x="90" y="336" width="420" height="10" fill="#26231c"/>
+  <rect x="90" y="390" width="130" height="30" fill="#a49a82"/>
+  <rect x="240" y="390" width="130" height="30" fill="none" stroke="#4a4536" stroke-width="1.5"/>
+</svg>
