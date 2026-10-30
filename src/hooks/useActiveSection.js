@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ids = ["beranda", "tentang", "keahlian", "proyek", "pengalaman", "kontak"];
+const ids = ["beranda", "tentang", "keahlian", "proyek", "pengalaman", "playlist", "kontak"];
 
 /** Mendeteksi section yang sedang berada di layar (scroll-spy) */
 export function useActiveSection() {

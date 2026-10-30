@@ -26,7 +26,7 @@ Kartu ID 3D di sisi kanan hero yang diimplementasikan seperti komponen Lanyard R
 - Nge-*pause* otomatis saat keluar viewport / tab tidak aktif (hemat baterai)
 
 ### Konten
-- Hero, Tentang, Keahlian, Proyek (4 mockup), Pengalaman, Testimoni, & Kontak dengan ikon merek SVG (GitHub, LinkedIn, Instagram, Dribbble)
+- Hero, Tentang, Keahlian, Proyek (4 mockup), Pengalaman, **Playlist Spotify** (embed bergaya mengikuti tema), & Kontak dengan ikon merek SVG (GitHub, LinkedIn, Instagram, Dribbble)
 - Footer + navigasi lengkap
 
 ---
@@ -81,7 +81,8 @@ portoAI2/
 │   │   ├── Marquee.jsx        # teks berjalan
 │   │   ├── About.jsx / Skills.jsx
 │   │   ├── Projects.jsx / Experience.jsx
-│   │   ├── Testimonials.jsx / Contact.jsx
+│   │   ├── Playlist.jsx        # sengatan playlist Spotify (embed + tema ikut)
+│   │   ├── Contact.jsx
 │   │   ├── SocialIcons.jsx / Reveal.jsx
 │   │   ├── SectionIndicator.jsx # progress bar + dot nav
 │   │   └── Footer.jsx

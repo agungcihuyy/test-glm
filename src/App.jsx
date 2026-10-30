@@ -9,7 +9,7 @@ import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
 import Projects from "./components/Projects.jsx";
 import Experience from "./components/Experience.jsx";
-import Testimonials from "./components/Testimonials.jsx";
+import Playlist from "./components/Playlist.jsx";
 import Contact from "./components/Contact.jsx";
 import SectionIndicator from "./components/SectionIndicator.jsx";
 
@@ -40,7 +40,7 @@ function Layout() {
         <Skills />
         <Projects />
         <Experience />
-        <Testimonials />
+        <Playlist />
         <Contact />
       </main>
     </>
