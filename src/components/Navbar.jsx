@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext.jsx";
 import { useActiveSection } from "../hooks/useActiveSection.js";
 
+/* urutan mengikuti section asli di halaman:
+   01 tentang → 02 keahlian → 03 proyek → 04 pengalaman */
 const LINKS = [
-  { href: "#proyek", label: "Karya" },
-  { href: "#keahlian", label: "Keahlian" },
   { href: "#tentang", label: "Tentang" },
+  { href: "#keahlian", label: "Keahlian" },
+  { href: "#proyek", label: "Karya" },
   { href: "#pengalaman", label: "Pengalaman" },
 ];
 

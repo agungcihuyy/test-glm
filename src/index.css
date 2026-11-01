@@ -1726,6 +1726,42 @@ body {
 
 @media (max-width: 860px) {
   .nav__links { display: none; }
+  /* footer responsif: sosial prominen di atas grid, bar kopirait
+     kecil di bawahnya, semuanya mepet dasar halaman */
+  .contact {
+    padding-bottom: 1.25rem;
+  }
+  .contact__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    padding: 1.7rem 0 0;
+  }
+  .contact__socials {
+    order: -1;                      /* ikon dulu, teks kopi di bawah */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.6rem;
+    width: 100%;
+  }
+  .contact__socials-label {
+    grid-column: 1 / -1;            /* label membentang di atas deretan ikon */
+    margin: 0 0 0.25rem;
+    font-size: 0.66rem;
+  }
+  .contact__socials a {
+    width: auto;
+    height: 52px;
+  }
+  .contact__socials a svg {
+    width: 19px;
+    height: 19px;
+  }
+  .contact__row > span {
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    line-height: 1.75;
+  }
   /* kontak cukup lewat menu hamburger — hamburger kepotong,
      KONTAK amankan juga dari baris navbar di layar sempit */
   .nav__cta { display: none; }
