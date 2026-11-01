@@ -99,17 +99,6 @@ export default function Hero({ ready }) {
       <div className="hero__blob hero__blob--1" />
       <div className="hero__blob hero__blob--2" />
 
-      {ready && (
-        <Suspense fallback={null}>
-          <div className="lanyard">
-            <Badge3D />
-            <span className="lanyard__hint">
-              Seret / ketuk kartunya — fisika 3D real-time
-            </span>
-          </div>
-        </Suspense>
-      )}
-
       {/* parallax hanya pada konten — section tetap di alur normal */}
       <div
         className="container hero__grid"
@@ -167,6 +156,17 @@ export default function Hero({ ready }) {
           </div>
         </div>
       </div>
+
+      {ready && (
+        <Suspense fallback={null}>
+          <div className="lanyard">
+            <Badge3D />
+            <span className="lanyard__hint">
+              Seret / ketuk kartunya — fisika 3D real-time
+            </span>
+          </div>
+        </Suspense>
+      )}
 
       <div className="hero__scroll">Scroll</div>
     </section>

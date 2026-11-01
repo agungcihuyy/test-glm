@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { useTheme } from "../context/ThemeContext.jsx";
 
@@ -398,11 +398,22 @@ const drawFront = (canvas, palette, photo) => {
   traceRoundedRectCtx(ctx, px, py, pw, ph, 18);
   ctx.stroke();
 
-  /* nama & peran */
+  /* nama & peran — auto-fit: syne lebar, jadi ukuran font diukur
+     agar "AGUNG PANDU" TIDAK PERNAH terpotong rusuk kartu */
   ctx.textAlign = "center";
   ctx.fillStyle = palette.ink;
-  ctx.font = "800 104px Syne, sans-serif";
-  ctx.fillText("AGUNG PANDU", w / 2, py + ph + 122);
+  try {
+    ctx.letterSpacing = "0px";
+  } catch (e) {
+    /* diabaikan */
+  }
+  let nameSize = 118;
+  ctx.font = `800 ${nameSize}px Syne, sans-serif`;
+  while (ctx.measureText("AGUNG PANDU").width > w - 176 && nameSize > 44) {
+    nameSize -= 4;
+    ctx.font = `800 ${nameSize}px Syne, sans-serif`;
+  }
+  ctx.fillText("AGUNG PANDU", w / 2, py + ph + 134);
   ctx.fillStyle = palette.muted;
   ctx.font = "600 34px 'JetBrains Mono', monospace";
   try {
@@ -815,6 +826,18 @@ const Lanyard = () => {
   const { theme } = useTheme();
   const palette = PALETTES[theme] || PALETTES.light;
 
+  /* kertas mode responsif (≤1023px): tali memanjang agar kartu
+     menggantung lebih rendah — persis seperti referensi alfari */
+  const [compact, setCompact] = useState(
+    () => window.matchMedia("(max-width: 1023.98px)").matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023.98px)");
+    const onChange = (e) => setCompact(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
+
   settingsRef.current = {
     cardColor: palette.card,
     strapColor: palette.strap,
@@ -824,7 +847,7 @@ const Lanyard = () => {
     cornerRadius: 0.22,
     size: 0.62,
     anchor: "center",
-    strapLength: 0.55,
+    strapLength: compact ? 0.8 : 0.55,
     strapWidth: 0.95,
     metal: "silver",
     gravity: 1,
@@ -1022,7 +1045,7 @@ const Lanyard = () => {
         ring.position.set(0, layout.ringY, 0);
         applied.framingKey = "";
       }
-      const framingKey = `${layoutKey}|${s.size}|${s.anchor}|${s.strapLength}|${view.width}|${view.height}`;
+      const framingKey = `${layoutKey}|${s.size}|${s.strapLength}|${view.width}|${view.height}`;
       if (framingKey !== applied.framingKey) {
         frameView();
         if (!placed) {

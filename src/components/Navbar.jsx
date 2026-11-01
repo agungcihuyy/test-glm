@@ -11,6 +11,7 @@ const LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { toggleTheme } = useTheme();
   const active = useActiveSection();
 
@@ -22,6 +23,14 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /* tutup menu mobile dengan tombol Esc */
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
@@ -79,8 +88,58 @@ export default function Navbar() {
               <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
+
+          {/* tombol hamburger — hanya tampil di responsive */}
+          <button
+            className={`nav__burger ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label={menuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+          </button>
         </div>
       </div>
+
+      {/* panel menu mobile — daftar semua section */}
+      {menuOpen && (
+        <nav className="nav__mobile" aria-label="Menu navigasi mobile">
+          <div className="container">
+            <ul>
+              {LINKS.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className={active === hrefToId(l.href) ? "active" : ""}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="#playlist"
+                  className={active === "playlist" ? "active" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Playlist
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#kontak"
+                  className={`nav__mobile-cta ${active === "kontak" ? "active" : ""}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Kontak
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
