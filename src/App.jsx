@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { ThemeProvider, useTheme } from "./context/ThemeContext.jsx";
 import Preloader from "./components/Preloader.jsx";
 import GlitchOverlay from "./components/GlitchOverlay.jsx";
@@ -12,37 +12,127 @@ import Experience from "./components/Experience.jsx";
 import Playlist from "./components/Playlist.jsx";
 import Contact from "./components/Contact.jsx";
 import SectionIndicator from "./components/SectionIndicator.jsx";
+import ProjectDetail from "./components/ProjectDetail.jsx";
+import { PROJECTS } from "./data/projects.js";
 
 function Layout() {
   const { switching } = useTheme();
   const [loading, setLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isGlitching, setIsGlitching] = useState(false);
 
-  // kunci scroll saat preloader tampil
+  // Inisialisasi dari URL query param saat pertama kali dibuka
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const projectId = params.get("project");
+    if (projectId) {
+      const match = PROJECTS.find((p) => p.id === projectId);
+      if (match) setSelectedProject(match);
+    }
+  }, []);
+
+  // Tangani navigasi tombol Back / Forward browser dengan micro-glitch halus
+  useEffect(() => {
+    const onPopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const projectId = params.get("project");
+      setIsGlitching(true);
+
+      setTimeout(() => {
+        if (projectId) {
+          const match = PROJECTS.find((p) => p.id === projectId);
+          setSelectedProject(match || null);
+        } else {
+          setSelectedProject(null);
+        }
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }, 130);
+
+      setTimeout(() => {
+        setIsGlitching(false);
+      }, 280);
+    };
+
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
+
+  // Kunci scroll saat preloader tampil
   useEffect(() => {
     document.body.style.overflow = loading ? "hidden" : "";
-    if (!loading) window.scrollTo(0, 0);
+    if (!loading && !selectedProject) window.scrollTo(0, 0);
     return () => {
       document.body.style.overflow = "";
     };
-  }, [loading]);
+  }, [loading, selectedProject]);
+
+  // Handler perpindahan ke halaman detail: glitch minimalis & smooth
+  const handleSelectProject = useCallback((project) => {
+    setIsGlitching(true);
+
+    setTimeout(() => {
+      setSelectedProject(project);
+      window.history.pushState({ projectId: project.id }, "", `?project=${project.id}`);
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 130);
+
+    setTimeout(() => {
+      setIsGlitching(false);
+    }, 280);
+  }, []);
+
+  // Handler kembali ke portofolio utama: glitch minimalis & smooth
+  const handleBack = useCallback(() => {
+    setIsGlitching(true);
+
+    setTimeout(() => {
+      setSelectedProject(null);
+      window.history.pushState({}, "", window.location.pathname);
+      const el = document.getElementById("proyek");
+      if (el) el.scrollIntoView({ behavior: "instant" });
+    }, 130);
+
+    setTimeout(() => {
+      setIsGlitching(false);
+    }, 280);
+  }, []);
 
   return (
     <>
       <div className="grain" aria-hidden="true" />
+
+      {/* Glitch overlay hanya untuk pergantian tema */}
       <GlitchOverlay active={switching} />
-      <SectionIndicator />
+
+      {/* Garis scanline laser halus saat perpindahan halaman */}
+      {isGlitching && <div className="page-glitch-line" aria-hidden="true" />}
+
       {loading && <Preloader onDone={() => setLoading(false)} />}
-      <Navbar />
-      <main>
-        <Hero ready={!loading} />
-        <Marquee />
-        <About />
-        <Skills />
-        <Projects />
-        <Experience />
-        <Playlist />
-        <Contact />
-      </main>
+
+      <div className={`page-wrapper ${isGlitching ? "page--glitch" : "page--ready"}`}>
+        {selectedProject ? (
+          <ProjectDetail
+            project={selectedProject}
+            onBack={handleBack}
+            onSelectProject={handleSelectProject}
+          />
+        ) : (
+          <>
+            <SectionIndicator />
+            <Navbar />
+            <main>
+              <Hero ready={!loading} />
+              <Marquee />
+              <About />
+              <Skills />
+              <Projects onSelectProject={handleSelectProject} />
+              <Experience />
+              <Playlist />
+              <Contact />
+            </main>
+          </>
+        )}
+      </div>
     </>
   );
 }

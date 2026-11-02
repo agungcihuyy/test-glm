@@ -1,20 +1,19 @@
 import { useMemo } from "react";
 
 /**
- * Overlay glitch layar penuh yang muncul SETIAP kali tema berganti.
- * Isinya: flash RGB-split, glitch bars acak, scanline, dan chroma shift.
+ * Overlay glitch layar penuh untuk pergantian tema gelap / terang.
  */
 export default function GlitchOverlay({ active }) {
   // posisi bar acak — dibuat ulang setiap kali overlay aktif
   const bars = useMemo(() => {
     if (!active) return [];
-    return Array.from({ length: 14 }, (_, i) => {
-      const height = 2 + Math.random() * 7; // vh
+    return Array.from({ length: 12 }, (_, i) => {
+      const height = 2 + Math.random() * 6; // vh
       const top = Math.random() * (100 - height);
-      const width = 20 + Math.random() * 70; // vw
+      const width = 20 + Math.random() * 60; // vw
       const left = Math.random() * (100 - width);
       const light = Math.random() > 0.5;
-      return { height, top, width, left, light, key: i, delay: Math.random() * 0.15 };
+      return { height, top, width, left, light, key: i, delay: Math.random() * 0.12 };
     });
   }, [active]);
 
