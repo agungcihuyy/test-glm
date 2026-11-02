@@ -2,9 +2,9 @@ import { useState } from "react";
 import Reveal from "./Reveal.jsx";
 
 const STATS = [
-  { b: "3+", s: "Tahun Pengalaman" },
-  { b: "24", s: "Proyek Selesai" },
-  { b: "12", s: "Klien Puas" },
+  { b: "6", s: "Bulan Pemblajaran" },
+  { b: "3", s: "Proyek Selesai" },
+  { b: "1", s: "Klien Puas" },
 ];
 
 function Portrait() {
@@ -28,7 +28,7 @@ function Portrait() {
       {failed && <div className="about__photo-empty">Foto profil</div>}
       <figcaption className="about__photo-tag">
         Agung Pandu
-        <span>— Jakarta, Indonesia</span>
+        <span>— Bali, Indonesia</span>
       </figcaption>
     </figure>
   );
@@ -54,25 +54,22 @@ export default function About() {
             <Reveal>
               <div className="about__text">
                 <p>
-                  Halo! Saya <strong>Agung Pandu</strong>, seorang web developer
-                  yang percaya bahwa desain terbaik lahir dari kesederhanaan.
-                  Saya fokus membangun antarmuka yang rapi, responsif, dan
-                  nyaman digunakan — tanpa ornamen yang tidak perlu.
+                  Halo! Saya <strong>Agung Pandu</strong>, seorang IT Enthusiast yang didorong oleh rasa penasaran tinggi untuk terus belajar, mengeksplorasi teknologi baru, dan menantang diri berkembang. Saya fokus membangun sistem serta fungsionalitas digital yang andal, adaptif, dan terus berevolusi.
                 </p>
                 <p>
-                  Keseharian saya berputar di sekitar JavaScript dan React:
-                  merancang komponen, menata tipografi, mengoptimalkan performa,
-                  dan memastikan setiap detail animasi punya tujuan. Bagi saya,
+                  Keseharian saya berputar di sekitar scroll Facebook dan Iseng:
+                  merancang komponen, mengoptimalkan performa,
+                  dan memastikan setiap detail punya tujuan. Bagi saya,
                   <strong>
                     {" "}
-                    kode yang baik itu terasa seperti desain yang baik
+                    kode yang baik itu berarti kodenya tidak jahat
                   </strong>{" "}
-                  — tenang, jelas, dan konsisten.
+                  ,tenang, jelas, dan konsisten.
                 </p>
                 <p>
-                  Di luar coding, saya senang mengeksplorasi tipografi, film
-                  analog, dan berkendi-kendi di kota sambil memotret
-                  arsitektur.
+                  Di luar coding, saya senang mengeksplorasi dunia, film
+                  , dan berkendi-kendi di kota sambil memotret
+                  keindahan dunia.
                 </p>
               </div>
             </Reveal>

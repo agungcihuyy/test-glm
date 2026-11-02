@@ -3,7 +3,7 @@ import Reveal from "./Reveal.jsx";
 /* === pendidikan: kolom kiri (terbaru di atas) === */
 const EDUCATION = [
   {
-    logo: "/images/logo-kampus.svg",
+    logo: "/images/logo-kampus.png",
     alt: "Logo Universitas Teknologi Nusantara",
     period: "2025 — Sekarang",
     role: "S1 Teknik Informatika",
@@ -11,24 +11,24 @@ const EDUCATION = [
     desc: "Fokus pengembangan web, struktur data, dan rekayasa perangkat lunak.",
   },
   {
-    logo: "/images/logo-sekolah.svg",
-    alt: "Logo SMK Negeri 1 Nusantara",
+    logo: "/images/logo-sekolah1.png",
+    alt: "Logo SMA Negeri 2 Tabanan",
     period: "2019 — 2022",
     role: "SMA Negeri 2 Tabanan",
     place: "SMA Negeri 2 Tabanan",
     desc: "Jurusan IPA; Tertarik dengan dunia kesehatan dan teknologi.",
   },
   {
-    logo: "/images/logo-sekolah.svg",
-    alt: "Logo SMK Negeri 1 Nusantara",
+    logo: "/images/logo-sekolah2.png",
+    alt: "Logo SMP Negeri 2 Tabanan",
     period: "2019 — 2022",
     role: "SMP Negeri 2 Tabanan",
     place: "SMP Negeri 2 Tabanan",
     desc: "Mengetahui perkembangan teknologi dan kesehatan.",
   },
   {
-    logo: "/images/logo-sekolah.svg",
-    alt: "Logo SMK Negeri 1 Nusantara",
+    logo: "/images/logo-sekolah3.png",
+    alt: "Logo SD Negeri 6 Delod Peken",
     period: "2019 — 2022",
     role: "SD Negeri 6 Delod Peken",
     place: "SD Negeri 6 Delod Peken",

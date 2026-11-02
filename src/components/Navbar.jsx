@@ -10,7 +10,7 @@ const EMAIL = "agungpandu36@gmail.com";
 const LINKS = [
   { href: "#tentang", label: "Tentang" },
   { href: "#keahlian", label: "Keahlian" },
-  { href: "#proyek", label: "Karya" },
+  { href: "#proyek", label: "Projects" },
   { href: "#pengalaman", label: "Journey" },
 ];
 

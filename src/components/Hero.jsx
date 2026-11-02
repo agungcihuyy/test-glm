@@ -111,7 +111,7 @@ export default function Hero({ ready }) {
           <p className="hero__eyebrow">
             <span>Halo, saya —</span>
           </p>
-          <span className="hero__toprow-meta">Portfolio — Edisi 2026</span>
+          <span className="hero__toprow-meta"></span>
           <span className="hero__spin" aria-hidden="true">
             ✳
           </span>
@@ -134,9 +134,7 @@ export default function Hero({ ready }) {
             </h1>
 
             <p className="hero__sub">
-              Saya merancang dan membangun pengalaman web yang bersih, cepat,
-              dan fungsional — dengan detail desain yang rapi dan kode yang
-              terstruktur.
+              Saya gabut dan tidak ada kerjaan makanya saya membuat website ini,yang dimana website ini bertujuan untuk menampilkan portofolio saya kedepannya,supaya saya bisa tidur.
             </p>
 
             <div className="hero__tags">

@@ -38,7 +38,7 @@ export default function Projects() {
         <Reveal>
           <div className="section__head">
             <span className="section__num">03</span>
-            <h2 className="section__title">Proyek Pilihan</h2>
+            <h2 className="section__title">Projects</h2>
           </div>
         </Reveal>
 

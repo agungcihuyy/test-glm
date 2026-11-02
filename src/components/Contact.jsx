@@ -12,10 +12,10 @@ const EMAIL_USER = "agungpandu36";
 const EMAIL_DOMAIN = EMAIL.split("@")[1]; // "gmail.com"
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com", Icon: GitHubIcon },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: LinkedInIcon },
-  { label: "Instagram", href: "https://instagram.com", Icon: InstagramIcon },
-  { label: "TikTok", href: "https://www.tiktok.com", Icon: TikTokIcon },
+  { label: "GitHub", href: "https://github.com/agungcihuyy", Icon: GitHubIcon },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/i-gusti-lanang-agung-wahyu-pandu-rangga-385029383/", Icon: LinkedInIcon },
+  { label: "Instagram", href: "https://instagram.com/gungpanduu_", Icon: InstagramIcon },
+  { label: "TikTok", href: "https://www.tiktok.com/@agungcihuyy_", Icon: TikTokIcon },
 ];
 
 export default function Contact() {
