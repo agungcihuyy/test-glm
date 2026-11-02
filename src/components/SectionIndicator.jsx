@@ -6,7 +6,7 @@ const SECTIONS = [
   { id: "tentang", label: "Tentang" },
   { id: "keahlian", label: "Keahlian" },
   { id: "proyek", label: "Karya" },
-  { id: "pengalaman", label: "Pengalaman" },
+  { id: "pengalaman", label: "Journey" },
   { id: "playlist", label: "Playlist" },
   { id: "kontak", label: "Kontak" },
 ];

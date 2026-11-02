@@ -39,17 +39,16 @@ const METALS = {
 const PALETTES = {
   light: {
     card: "#1b1813",
-    ink: "#efe8d8",
+    ink: "#f2f1e6",
     muted: "#948c7c",
     line: "#3b362c",
     strap: "#211c13"
   },
   dark: {
-    card: "#efe8d8",
-    ink: "#17140f",
-    muted: "#8f8776",
-    line: "#c9c0a6",
-    strap: "#e2d9c4"
+    card: "#f2f1e6",    ink: "#17140f",
+    muted: "#877f6c",
+    line: "#d3ceba",
+    strap: "#e9e7d8"
   }
 };
 

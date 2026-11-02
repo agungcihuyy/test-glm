@@ -22,14 +22,14 @@
   --ease: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-/* Light mode (cream) */
+/* Light mode (cream, sampel swatch #f2f1e6) */
 :root[data-theme="light"] {
-  --bg: #f2ecdf;
-  --bg-soft: #eae2cf;
-  --bg-card: #f7f2e7;
+  --bg: #f2f1e6;
+  --bg-soft: #e9e7d8;
+  --bg-card: #f8f7ee;
   --ink: #16140f;
-  --muted: #6f6754;
-  --line: #d9cfb6;
+  --muted: #6c6553;
+  --line: #dbd6c3;
   --accent: #1a1712;
   --accent-2: #7d745e;
 }
@@ -97,7 +97,7 @@ body {
 }
 
 .container {
-  width: min(1200px, 90vw);
+  width: min(1080px, 84vw); /* 84vw: sisi kiri-kanan lebih lega, konten lebih masuk ke tengah */
   margin: 0 auto;
 }
 
@@ -1061,7 +1061,8 @@ body {
    ============================================================ */
 .marquee {
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  /* tanpa border-bawah — section berikutnya membawa garisnya sendiri,
+     jadi tidak pernah ada garis ganda */
   padding: 1.1rem 0;
   overflow: hidden;
   white-space: nowrap;
@@ -1110,8 +1111,13 @@ body {
    SECTION umum
    ============================================================ */
 .section {
-  padding: 7rem 0;
+  padding: 0 0 7rem;
   scroll-margin-top: 90px; /* anchor tidak tertutup navbar */
+}
+/* garis pembatas hanya selebar konten, bukan full satu halaman */
+.section > .container {
+  border-top: 1px solid var(--line);
+  padding-top: 7rem;
 }
 
 /* ---- progress bar scroll (paling atas) ---- */
@@ -1483,20 +1489,53 @@ body {
 /* ============================================================
    EXPERIENCE
    ============================================================ */
-.exp-list {
-  border-top: 1px solid var(--line);
-}
 .exp-row {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 2rem;
-  align-items: baseline;
-  padding: 1.9rem 0;
+  grid-template-columns: 52px 1fr;
+  gap: 1.15rem;
+  align-items: start;
+  padding: 1.55rem 0;
   border-bottom: 1px solid var(--line);
   transition: padding-left 0.35s var(--ease);
 }
 .exp-row:hover {
-  padding-left: 1.2rem;
+  padding-left: 1rem;
+}
+/* nomor urut pengalaman dalam lingkaran — terisi tinta saat hover */
+.exp-index {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  transition: background 0.35s, color 0.35s, border-color 0.35s,
+    transform 0.35s var(--ease);
+}
+.exp-row:hover .exp-index {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+  transform: rotate(-8deg) scale(1.05);
+}
+/* baris kecil: tempat · periode */
+.exp-metaline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.2rem;
+}
+.exp-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.8;
 }
 .exp-period {
   font-family: var(--font-mono);
@@ -1523,6 +1562,65 @@ body {
   font-size: 0.95rem;
   line-height: 1.65;
   max-width: 62ch;
+}
+
+/* subjudul blok (Pendidikan / Pengalaman) — label mono kecil
+   dengan diamond + garis tak berujung, memisahkan dua blok */
+.exp-sub {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0;
+  padding: 2.2rem 0 1.1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.exp-sub::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--ink);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+.exp-sub::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* dua kolom: pendidikan (kiri) | pengalaman (kanan),
+   dipisah garis vertikal tipis ala blueprint */
+.exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+}
+.exp-col { min-width: 0; }
+.exp-col--edu { padding-right: 2.6rem; }
+.exp-col--exp {
+  border-left: 1px solid var(--line);
+  padding-left: 2.6rem;
+}
+
+/* logo sekolah/kampus — mengambil posisi sel nomor di baris
+   pendidikan (segrid dengan lingkaran pengalaman), memiring saat hover */
+.edu-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  transition: transform 0.35s var(--ease);
+}
+.exp-row:hover .edu-badge {
+  transform: rotate(-8deg) scale(1.05);
 }
 
 /* ============================================================
@@ -1610,9 +1708,10 @@ body {
 .contact__big {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.9rem, 5.6vw, 4.8rem);
-  line-height: 1.06;
-  text-transform: uppercase;
+  font-size: clamp(1.55rem, 4.4vw, 3.6rem);
+  line-height: 1.08;
+  text-transform: lowercase;
+  letter-spacing: -0.015em;
   margin-bottom: 2.5rem;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -1623,8 +1722,56 @@ body {
   text-decoration: none;
   transition: color 0.35s;
 }
+/* domain sebagai aksen tenang: dihapus garisnya, lebih kecil,
+   warna muted — nama pengguna tetap jadi tokoh utama */
+.contact__big-domain {
+  color: var(--muted);
+  -webkit-text-stroke: 0;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0;
+  transition: color 0.35s;
+}
 .contact__big a:hover {
   color: var(--ink);
+}
+.contact__big a:hover .contact__big-domain {
+  color: var(--ink);
+}
+/* pasangan tombol salin email — chip mono kecil, hover terisi tinta;
+   setelah menyalin tetap terisi dengan label "TERSALIN ✓" */
+.contact__mail {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+.contact-copy {
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.4rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.contact-copy:hover {
+  background: var(--ink);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+.contact-copy.copied {
+  background: var(--ink);
+  color: var(--bg);
+}
+.contact-copy:active {
+  transform: translateY(0) scale(0.97);
 }
 .contact__row {
   display: flex;
@@ -1654,6 +1801,7 @@ body {
   width: 46px;
   height: 46px;
   border: 1px solid var(--line);
+  border-radius: 12px;
   display: grid;
   place-items: center;
   color: var(--muted);
@@ -1726,8 +1874,7 @@ body {
 
 @media (max-width: 860px) {
   .nav__links { display: none; }
-  /* footer responsif: sosial prominen di atas grid, bar kopirait
-     kecil di bawahnya, semuanya mepet dasar halaman */
+  /* bar footer (© Agung Pandu + sosial) digeser mepet dasar halaman */
   .contact {
     padding-bottom: 1.25rem;
   }
@@ -1769,77 +1916,153 @@ body {
   .nav__brand { min-width: 0; }
   .nav__brand-text { min-width: 0; }
   .nav__brand-text b { white-space: nowrap; font-size: 0.92rem; }
-  /* hamburger + panel menu section */
+  /* hamburger + menu layar penuh: link raksasa bernomor,
+     masuk beruntun, blok kontak tersemat di kaki */
   .nav__burger { display: flex; }
   .nav__mobile {
-    display: block;
-    background: color-mix(in srgb, var(--bg) 90%, transparent);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    animation: navDrop 0.32s var(--ease);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    padding: 6.2rem 4.5vw 1.8rem;
+    background: var(--bg);
+    overflow-y: auto;
+    animation: menuIn 0.34s var(--ease);
   }
-  .nav__mobile ul {
+  .nav__mobile-list {
     margin: 0;
-    padding: 0.2rem 0 0.9rem;
+    padding: 0;
     list-style: none;
   }
-  .nav__mobile li {
-    border-top: 1px solid var(--line);
+  .nav__mobile-list li {
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(14px);
+    animation: menuItemUp 0.45s var(--ease) forwards;
   }
-  .nav__mobile a {
+  .nav__mobile-list a {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.95rem 0.2rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.7rem, 7.4vw, 2.9rem);
+    line-height: 1.04;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    transition: color 0.25s, padding-left 0.3s var(--ease);
+  }
+  .nav__mobile-list a .idx {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    align-self: center;
+    transition: color 0.25s;
+  }
+  .nav__mobile-list a .arr {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0;
+    translate: -6px 0;
+    transition: opacity 0.25s, translate 0.25s;
+  }
+  .nav__mobile-list a:hover,
+  .nav__mobile-list a.active {
+    padding-left: 0.7rem;
+  }
+  .nav__mobile-list a:hover .arr,
+  .nav__mobile-list a.active .arr {
+    opacity: 1;
+    translate: 0 0;
+  }
+  .nav__mobile-list a.active .idx {
+    color: var(--ink);
+  }
+  /* kontak dinaikkan sebagai baris khusus: teks outline menunggu hover */
+  .nav__mobile-list a.is-cta {
+    border-bottom: 0;
+  }
+  /* kaki menu: kontak cepat (email + salin) + status */
+  .nav__mobile-foot {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    display: grid;
+    gap: 0.85rem;
+  }
+  .nav__mobile-foot .foot-label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav__mobile-foot .foot-mail {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.95rem 0.2rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  .nav__mobile-foot .foot-mail > a {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 3.1vw, 1.25rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
     text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.25s;
+  }
+  .nav__mobile-foot .foot-mail > a:hover {
     color: var(--muted);
-    transition: color 0.25s, padding-left 0.25s;
   }
-  .nav__mobile a::after {
-    content: "→";
-    font-size: 0.9rem;
-    color: var(--ink);
-    opacity: 0;
-    transition: opacity 0.25s, translate 0.25s;
-    translate: -4px 0;
-  }
-  .nav__mobile a:hover,
-  .nav__mobile a.active {
-    color: var(--ink);
-    padding-left: 0.55rem;
-  }
-  .nav__mobile a:hover::after,
-  .nav__mobile a.active::after {
-    opacity: 1;
-    translate: 0 0;
-  }
-  /* item "Kontak" di panel dibedakan sebagai aksi utama */
-  .nav__mobile .nav__mobile-cta {
-    margin-top: 0.55rem;
+  .nav__mail-copy {
+    flex-shrink: 0;
     border: 1px solid var(--ink);
-    padding: 0.95rem 1rem;
-    justify-content: center;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease);
+  }
+  .nav__mail-copy:hover,
+  .nav__mail-copy.copied {
     background: var(--ink);
     color: var(--bg);
   }
-  .nav__mobile .nav__mobile-cta::after {
-    content: "↗";
+  .nav__mobile-foot .foot-open {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0.85;
   }
-  .nav__mobile .nav__mobile-cta:hover {
-    padding-left: 1rem;
-    color: var(--ink);
-    background: transparent;
+  .nav--open {
+    background: var(--bg);
+    border-bottom-color: var(--line);
   }
-  @keyframes navDrop {
+  @keyframes menuIn {
     from {
-      transform: translateY(-10px);
+      transform: translateY(-3%);
       opacity: 0;
+    }
+  }
+  @keyframes menuItemUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   .about__grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1851,7 +2074,29 @@ body {
     height: 420px;
   }
   .skill-row { grid-template-columns: 40px 1fr 70px; }
-  .exp-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.6rem 0; }
+  .exp-row {
+    grid-template-columns: 40px 1fr;
+    gap: 0.9rem;
+    padding: 1.4rem 0;
+  }
+  .exp-index {
+    width: 40px;
+    height: 40px;
+    font-size: 0.72rem;
+  }
+  .edu-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  /* dua kolom pendidikan|pengalaman menumpuk di layar sempit */
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-col--edu { padding-right: 0; }
+  .exp-col--exp {
+    border-left: 0;
+    padding-left: 0;
+    margin-top: 2.4rem;
+  }
   .hero__scroll { display: none; }
   .nav__brand-text small { display: none; }
   /* hint bisa tertimpa ayunan kartu di layar sempit — sembunyikan */

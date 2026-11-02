@@ -59,8 +59,9 @@ fisika eksternal:
   melekat dari puncak halaman — nge-*pause* otomatis saat keluar viewport
 
 ### 🧩 Konten
-- Hero · Tentang · Keahlian · Proyek (4 mockup SVG) · Pengalaman ·
-  **Playlist Spotify** (duotone mengikuti tema) · Kontak + sosial media
+- Hero · Tentang · Keahlian · Proyek (4 mockup SVG) · Journey (Pendidikan
+  & Pengalaman dua kolom) · **Playlist Spotify** (duotone mengikuti tema) ·
+  Kontak + sosial media
 - Navbar responsif + panel menu hamburger, indikator section & progress bar
 
 ---

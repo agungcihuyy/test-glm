@@ -2,18 +2,29 @@ import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext.jsx";
 import { useActiveSection } from "../hooks/useActiveSection.js";
 
+/* sinkron dengan Contact.jsx — satu email, dua pintu masuknya */
+const EMAIL = "agungpandu36@gmail.com";
+
 /* urutan mengikuti section asli di halaman:
    01 tentang → 02 keahlian → 03 proyek → 04 pengalaman */
 const LINKS = [
   { href: "#tentang", label: "Tentang" },
   { href: "#keahlian", label: "Keahlian" },
   { href: "#proyek", label: "Karya" },
-  { href: "#pengalaman", label: "Pengalaman" },
+  { href: "#pengalaman", label: "Journey" },
+];
+
+/* item panel menu: LINKS + Playlist + Kontak (aksi utama) */
+const MENU_ITEMS = [
+  ...LINKS,
+  { href: "#playlist", label: "Playlist" },
+  { href: "#kontak", label: "Kontak", cta: true },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mailCopied, setMailCopied] = useState(false);
   const { toggleTheme } = useTheme();
   const active = useActiveSection();
 
@@ -34,8 +45,26 @@ export default function Navbar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
+  /* kunci scroll halaman selama menu layar penuh terbuka */
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setMailCopied(true);
+      setTimeout(() => setMailCopied(false), 2200);
+    } catch {
+      /* clipboard bisa diblokir browser — diabaikan */
+    }
+  };
+
   return (
-    <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
+    <header className={`nav ${scrolled ? "nav--scrolled" : ""} ${menuOpen ? "nav--open" : ""}`}>
       <div className="container nav__inner">
         {/* --- brand: kotak logo AP + nama --- */}
         <a href="#" className="nav__brand">
@@ -104,41 +133,54 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* panel menu mobile — daftar semua section */}
+      {/* panel menu layar penuh — semua section + blok kontak */}
       {menuOpen && (
         <nav className="nav__mobile" aria-label="Menu navigasi mobile">
-          <div className="container">
-            <ul>
-              {LINKS.map((l) => (
-                <li key={l.href}>
-                  <a
-                    href={l.href}
-                    className={active === hrefToId(l.href) ? "active" : ""}
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    {l.label}
-                  </a>
-                </li>
-              ))}
-              <li>
+          <ul className="nav__mobile-list">
+            {MENU_ITEMS.map((l, i) => (
+              <li
+                key={l.href}
+                style={{ animationDelay: `${80 + i * 55}ms` }}
+              >
                 <a
-                  href="#playlist"
-                  className={active === "playlist" ? "active" : ""}
+                  href={l.href}
+                  className={[
+                    l.cta ? "is-cta" : "",
+                    active === hrefToId(l.href) ? "active" : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                   onClick={() => setMenuOpen(false)}
                 >
-                  Playlist
+                  <span className="idx">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="label">{l.label}</span>
+                  <span className="arr">{l.cta ? "↗" : "→"}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href="#kontak"
-                  className={`nav__mobile-cta ${active === "kontak" ? "active" : ""}`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Kontak
-                </a>
-              </li>
-            </ul>
+            ))}
+          </ul>
+
+          {/* kaki menu — pintasan kontak: email penuh + salin + status */}
+          <div className="nav__mobile-foot">
+            <span className="foot-label">Kirim email</span>
+            <div className="foot-mail">
+              <a
+                href={`mailto:${EMAIL}`}
+                onClick={() => setMenuOpen(false)}
+                title="Buka aplikasi email"
+              >
+                {EMAIL}
+              </a>
+              <button
+                type="button"
+                className={`nav__mail-copy${mailCopied ? " copied" : ""}`}
+                onClick={copyEmail}
+                aria-live="polite"
+              >
+                {mailCopied ? "Tersalin ✓" : "Salin"}
+              </button>
+            </div>
+            <span className="foot-open">Terbuka untuk proyek · balasan cepat via email</span>
           </div>
         </nav>
       )}

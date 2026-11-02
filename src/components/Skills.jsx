@@ -2,11 +2,11 @@ import Reveal from "./Reveal.jsx";
 import { useInView } from "../hooks/useInView.js";
 
 const SKILLS = [
-  { name: "JavaScript (ES6+)", level: 0.92 },
-  { name: "React & Next.js", level: 0.88 },
+  { name: "Laravel Framework", level: 0.92 },
+  { name: "Python", level: 0.88 },
   { name: "CSS / Tailwind", level: 0.94 },
-  { name: "Node.js & Express", level: 0.78 },
-  { name: "UI/UX Design", level: 0.72 },
+  { name: "Database", level: 0.78 },
+  { name: "JavaScript", level: 0.72 },
 ];
 
 function SkillsInner() {

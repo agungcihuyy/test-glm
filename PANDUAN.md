@@ -24,17 +24,17 @@ Isi website saat ini **masih placeholder**. Berurutan dari yang paling penting:
 | ✔ | Apa | Di file mana | Jangan lupa |
 |---|-----|--------------|-------------|
 | ☐ | **Foto profil** | taruh sebagai `public/images/portrait.jpg` | Nama file harus persis ini; wajah kartu lanyard & section About otomatis memakainya |
-| ☐ | **Email** | `src/components/Contact.jsx` → `mailto:halo@agungpandu.id` | Ganti dengan email asli (muncul 2× di file itu) |
+| ☐ | **Email** | `src/components/Contact.jsx` → `EMAIL` | `EMAIL_USER` bisa ikut diubah (bagian sebelum `@`); domain otomatis dari `EMAIL`; tombol "SALIN EMAIL" menyalin `EMAIL` penuh |
 | ☐ | **Sosial media** | `src/components/Contact.jsx` → array `SOCIALS` | Ganti URL `github.com`/`linkedin.com`/dst. dengan profil asli |
 | ☐ | **Data proyek** | `src/components/Projects.jsx` | 4 proyek: judul, deskripsi, teknologi, link demo/repo |
 | ☐ | **Gambar proyek** | `public/images/project-1..4.svg` | Ganti screenshot proyek asli (jpg/png ok, ubah path di Projects.jsx) |
-| ☐ | **Data pengalaman** | `src/components/Experience.jsx` | Riwayat kerja/organisasi |
+| ☐ | **Journey (pendidikan & pengalaman)** | `src/components/Experience.jsx` | Dua kolom: `EDUCATION` (kiri, dengan logo) & `EXPERIENCES` (kanan, pakai nomor). Logo: timpa `public/images/logo-kampus.svg` & `logo-sekolah.svg` dengan logo asli (SVG/PNG) |
 | ☐ | **Tentang saya** | `src/components/About.jsx` + statistik | Paragraf perkenalan & angka (proyek, tahun, dst) |
 | ☐ | **Keahlian** | `src/components/Skills.jsx` | Nama skill + tingkat (%) |
 | ☐ | **Playlist Spotify** | `src/components/Playlist.jsx` → `PLAYLIST_ID` | ID playlist "Code" Anda: `0EwzZUUpmX29j1zlBDQziO` (sudah terpasang) |
 | ☐ | **Cover playlist krem** | unggah `public/images/spotify-cover.png` sebagai cover playlist di Spotify (aplikasi desktop/web) | Opsional — membuat header widget bernada netral |
 
-> ✅ Yang **sudah jadi memakai data asli**: playlist ID, favicon logo AP, favicon/theme-color, seluruh teks & animasi.
+> ✅ Yang **sudah jadi memakai data asli**: playlist ID, favicon logo AP, email `agungpandu36@gmail.com`, wajah kartu lanyard (foto jiiirr), seluruh teks & animasi.
 
 ---
 
