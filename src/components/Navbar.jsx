@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "../context/ThemeContext.jsx";
 import { useActiveSection } from "../hooks/useActiveSection.js";
+import { goToSection } from "../hooks/useGoToSection.js";
 
 /* urutan mengikuti section asli di halaman:
    01 tentang → 02 keahlian → 03 proyek → 04 pengalaman */
@@ -69,12 +70,16 @@ export default function Navbar() {
           <a
             href="#"
             className="nav__brand"
-            onClick={() => setMenuOpen(false)}
+            onClick={(e) => {
+              e.preventDefault();
+              setMenuOpen(false);
+              goToSection("#");
+            }}
           >
             <span className="nav__logo-mark">AP</span>
             <span className="nav__brand-text">
               <b>Agung Pandu</b>
-              <small>Fullstack Developer &amp; UI Engineer</small>
+              <small>Dengveloper</small>
             </span>
           </a>
 
@@ -86,6 +91,11 @@ export default function Navbar() {
                   <a
                     href={l.href}
                     className={active === hrefToId(l.href) ? "active" : ""}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMenuOpen(false);
+                      goToSection(l.href);
+                    }}
                   >
                     {l.label}
                   </a>
@@ -116,7 +126,14 @@ export default function Navbar() {
               </svg>
             </button>
 
-            <a href="#kontak" className="nav__cta">
+            <a
+              href="#kontak"
+              className="nav__cta"
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection("#kontak");
+              }}
+            >
               Kontak
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M7 17 17 7M9 7h8v8" strokeLinecap="round" strokeLinejoin="round" />
@@ -166,7 +183,11 @@ export default function Navbar() {
                       ]
                         .filter(Boolean)
                         .join(" ")}
-                      onClick={() => setMenuOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMenuOpen(false);
+                        goToSection(l.href);
+                      }}
                     >
                       <span className="idx">{String(i + 1).padStart(2, "0")}</span>
                       <span className="label">{l.label}</span>

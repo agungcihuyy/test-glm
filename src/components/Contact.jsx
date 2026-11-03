@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Reveal from "./Reveal.jsx";
 import {
   GitHubIcon,
@@ -20,6 +20,21 @@ const SOCIALS = [
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [clock, setClock] = useState("--:--:--");
+
+  /* jam lokal live (WITA) — detak visual di panel info kontak */
+  useEffect(() => {
+    const fmt = new Intl.DateTimeFormat("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      timeZone: "Asia/Makassar",
+    });
+    const tick = () => setClock(fmt.format(new Date()));
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
 
   const copyEmail = async () => {
     try {
@@ -42,23 +57,35 @@ export default function Contact() {
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="contact__big">
-            <div>Ada proyek?</div>
-            <div className="contact__mail">
-              <a href={`mailto:${EMAIL}`}>
-                <span className="contact__big-user">{EMAIL_USER}</span>
-                <span className="contact__big-domain">@{EMAIL_DOMAIN}</span>
-              </a>
-              <button
-                type="button"
-                className={`contact-copy${copied ? " copied" : ""}`}
-                onClick={copyEmail}
-                title="Salin email lengkap ke clipboard"
-                aria-live="polite"
-              >
-                {copied ? "Tersalin ✓" : "Salin email"}
-              </button>
+          <div className="contact__lead">
+            <span className="contact__status">
+              <i />
+              Terbuka untuk proyek
+            </span>
+            <div className="contact__big">
+              <div>Ada proyek?</div>
+              <div className="contact__mail">
+                <a href={`mailto:${EMAIL}`}>
+                  <span className="contact__big-user">{EMAIL_USER}</span>
+                  <span className="contact__big-domain">@{EMAIL_DOMAIN}</span>
+                </a>
+                <button
+                  type="button"
+                  className={`contact-copy${copied ? " copied" : ""}`}
+                  onClick={copyEmail}
+                  title="Salin email lengkap ke clipboard"
+                  aria-live="polite"
+                >
+                  {copied ? "Tersalin ✓" : "Salin email"}
+                </button>
+              </div>
             </div>
+            {/* satu baris meta sunyi — basis, jam lokal live, respons */}
+            <p className="contact__meta">
+              Bali, Indonesia —{" "}
+              <span className="contact__clock">{clock} WITA</span> · respon{" "}
+              {"<"} 1×24 jam
+            </p>
           </div>
         </Reveal>
 

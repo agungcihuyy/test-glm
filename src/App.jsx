@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+﻿import { useEffect, useState, useCallback } from "react";
 import { ThemeProvider, useTheme } from "./context/ThemeContext.jsx";
 import Preloader from "./components/Preloader.jsx";
 import GlitchOverlay from "./components/GlitchOverlay.jsx";
@@ -36,7 +36,7 @@ function Layout() {
     const onPopState = () => {
       const params = new URLSearchParams(window.location.search);
       const projectId = params.get("project");
-      setIsGlitching(true);
+        setIsGlitching(true);
 
       setTimeout(() => {
         if (projectId) {
@@ -46,11 +46,11 @@ function Layout() {
           setSelectedProject(null);
         }
         window.scrollTo({ top: 0, behavior: "instant" });
-      }, 130);
+      }, 170);
 
       setTimeout(() => {
         setIsGlitching(false);
-      }, 280);
+      }, 340);
     };
 
     window.addEventListener("popstate", onPopState);
@@ -66,7 +66,9 @@ function Layout() {
     };
   }, [loading, selectedProject]);
 
-  // Handler perpindahan ke halaman detail: glitch minimalis & smooth
+  // Handler perpindahan ke halaman detail: glitch terasa tapi smooth
+  const TRANSITION = 340; // sinkron dengan keyframes CSS glitch
+
   const handleSelectProject = useCallback((project) => {
     setIsGlitching(true);
 
@@ -74,14 +76,14 @@ function Layout() {
       setSelectedProject(project);
       window.history.pushState({ projectId: project.id }, "", `?project=${project.id}`);
       window.scrollTo({ top: 0, behavior: "instant" });
-    }, 130);
+    }, 170);
 
     setTimeout(() => {
       setIsGlitching(false);
-    }, 280);
+    }, TRANSITION);
   }, []);
 
-  // Handler kembali ke portofolio utama: glitch minimalis & smooth
+  // Handler kembali ke portofolio utama: glitch terasa tapi smooth
   const handleBack = useCallback(() => {
     setIsGlitching(true);
 
@@ -90,12 +92,12 @@ function Layout() {
       window.history.pushState({}, "", window.location.pathname);
       const el = document.getElementById("proyek");
       if (el) el.scrollIntoView({ behavior: "instant" });
-    }, 130);
+    }, 170);
 
     setTimeout(() => {
       setIsGlitching(false);
-    }, 280);
-  }, []);
+    }, TRANSITION);
+  }, [TRANSITION]);
 
   return (
     <>
@@ -109,7 +111,9 @@ function Layout() {
 
       {loading && <Preloader onDone={() => setLoading(false)} />}
 
-      <div className={`page-wrapper ${isGlitching ? "page--glitch" : "page--ready"}`}>
+      <div
+        className={`page-wrapper ${isGlitching ? "page--glitch" : "page--ready"}`}
+      >
         {selectedProject ? (
           <ProjectDetail
             project={selectedProject}

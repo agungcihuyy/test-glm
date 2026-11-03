@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useScramble } from "../hooks/useScramble.js";
+import { goToSection } from "../hooks/useGoToSection.js";
 
 const TECH_TAGS = ["React", "TypeScript", "Node.js", "Tailwind", "Figma"];
 
@@ -144,10 +145,24 @@ export default function Hero({ ready }) {
             </div>
 
             <div className="hero__cta">
-              <a href="#proyek" className="btn">
+              <a
+                href="#proyek"
+                className="btn"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection("#proyek");
+                }}
+              >
                 Lihat Proyek
               </a>
-              <a href="#kontak" className="btn btn--ghost">
+              <a
+                href="#kontak"
+                className="btn btn--ghost"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection("#kontak");
+                }}
+              >
                 Hubungi Saya
               </a>
             </div>

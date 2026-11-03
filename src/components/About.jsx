@@ -2,7 +2,7 @@ import { useState } from "react";
 import Reveal from "./Reveal.jsx";
 
 const STATS = [
-  { b: "6", s: "Bulan Pemblajaran" },
+  { b: "6", s: "Bulan Pembelajaran" },
   { b: "3", s: "Proyek Selesai" },
   { b: "1", s: "Klien Puas" },
 ];

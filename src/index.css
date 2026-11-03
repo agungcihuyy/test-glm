@@ -1,5 +1,5 @@
-/* ============================================
-   AGUNG PANDU — PORTFOLIO
+﻿/* ============================================
+   AGUNG PANDU â€” PORTFOLIO
    Tema: hitam / putih / cream
    ============================================ */
 
@@ -54,7 +54,7 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
-/* transisi tema per elemen — overlay glitch yang membuat transisi terasa "dipedas" */
+/* transisi tema per elemen â€” overlay glitch yang membuat transisi terasa "dipedas" */
 :root.theme-switching * {
   transition: none !important;
 }
@@ -104,7 +104,7 @@ body {
 }
 
 /* ============================================================
-   PRELOADER — hanya logo situs
+   PRELOADER â€” hanya logo situs
    ============================================================ */
 .preloader {
   position: fixed;
@@ -218,7 +218,7 @@ body {
 }
 
 /* ============================================================
-   GLITCH OVERLAY — animasi saat ganti tema
+   GLITCH OVERLAY â€” animasi saat ganti tema
    ============================================================ */
 .glitch-overlay {
   position: fixed;
@@ -302,7 +302,7 @@ body {
 }
 
 /* ============================================================
-   NAVBAR — minimalis ala referensi
+   NAVBAR â€” minimalis ala referensi
    ============================================================ */
 .nav {
   position: fixed;
@@ -335,6 +335,12 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   height: 100%;
+  /* navbar TIDAK menjorok ke tengah — override lebar .container:
+     isinya membentang dari tepi kiri sampai tepi kanan layar */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding-inline: clamp(1rem, 2.4vw, 2.4rem);
 }
 
 /* --- brand: kotak AP + nama + subjudul --- */
@@ -498,7 +504,7 @@ body {
 :root[data-theme="dark"] .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.4); }
 :root[data-theme="dark"] .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
 
-/* hamburger — hanya tampil di responsive (≤1024px);
+/* hamburger â€” hanya tampil di responsive (â‰¤1024px);
    base disini agar desktop default-nya tersembunyi */
 .nav__burger {
   display: none;
@@ -542,7 +548,7 @@ body {
   transform: translateY(-3.25px) rotate(-45deg);
 }
 
-/* panel menu mobile — disembunyikan di desktop; di responsive
+/* panel menu mobile â€” disembunyikan di desktop; di responsive
    muncul hanya saat state menuOpen (render kondisional di JSX) */
 .nav__backdrop,
 .nav__mobile {
@@ -588,7 +594,7 @@ body {
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
-  padding: 8rem 0 4.5rem;
+  padding: 8rem 0 7rem; /* bagian bawah dilebarkan — blok nama + CTA naik sedikit */
   overflow: hidden;
 }
 
@@ -727,7 +733,7 @@ body {
   gap: 1.3rem;
 }
 .hero__tags span::after {
-  content: "·";
+  content: "Â·";
   color: var(--line);
 }
 .hero__tags span:last-child::after {
@@ -858,7 +864,7 @@ body {
 }
 
 /* ============================================================
-   LANYARD 3D — komponen ala ReactBits (vanilla three.js)
+   LANYARD 3D â€” komponen ala ReactBits (vanilla three.js)
    ============================================================ */
 .lanyard {
   position: absolute;
@@ -921,7 +927,7 @@ body {
 }
 .hero__line span {
   display: inline-block;
-  white-space: nowrap; /* judul jangan pernah wrap — auto-fit JS yang atur ukuran */
+  white-space: nowrap; /* judul jangan pernah wrap â€” auto-fit JS yang atur ukuran */
   transform: translateY(130%);
   opacity: 0;
   max-width: none;
@@ -1077,18 +1083,18 @@ body {
 }
 
 /* ============================================================
-   MARQUEE — teks bergerak
+   MARQUEE â€” teks bergerak
    ============================================================ */
 .marquee {
   border-top: 1px solid var(--line);
-  /* tanpa border-bawah — section berikutnya membawa garisnya sendiri,
+  /* tanpa border-bawah â€” section berikutnya membawa garisnya sendiri,
      jadi tidak pernah ada garis ganda */
   padding: 1.1rem 0;
   overflow: hidden;
   white-space: nowrap;
   background: var(--bg-soft);
   position: relative;
-  z-index: 5; /* selalu DI ATAS hero — tidak akan tertabrak */
+  z-index: 5; /* selalu DI ATAS hero â€” tidak akan tertabrak */
 }
 .marquee--reverse {
   transform: rotate(1.2deg) scale(1.02);
@@ -1242,7 +1248,7 @@ body {
 }
 
 /* ============================================================
-   ABOUT — dengan foto profil
+   ABOUT â€” dengan foto profil
    ============================================================ */
 .about__grid {
   display: grid;
@@ -1403,7 +1409,7 @@ body {
 }
 
 /* ============================================================
-   PROJECTS — dengan gambar desain
+   PROJECTS â€” dengan gambar desain
    ============================================================ */
 .projects__grid {
   display: grid;
@@ -1513,7 +1519,8 @@ body {
   color: color-mix(in srgb, var(--bg) 70%, var(--ink));
 }
 .project-card:hover .project-card__tags span {
-  border-color: color-mix(in srgb, var(--bg) 40%, transparent);
+  color: var(--bg); /* teks chip kontras pada badan kartu yang berbalik gelap */
+  border-color: color-mix(in srgb, var(--bg) 42%, transparent);
 }
 
 /* ============================================================
@@ -1531,7 +1538,7 @@ body {
 .exp-row:hover {
   padding-left: 1rem;
 }
-/* nomor urut pengalaman dalam lingkaran — terisi tinta saat hover */
+/* nomor urut pengalaman dalam lingkaran â€” terisi tinta saat hover */
 .exp-index {
   width: 44px;
   height: 44px;
@@ -1552,7 +1559,7 @@ body {
   border-color: var(--ink);
   transform: rotate(-8deg) scale(1.05);
 }
-/* baris kecil: tempat · periode */
+/* baris kecil: tempat Â· periode */
 .exp-metaline {
   display: flex;
   align-items: center;
@@ -1594,7 +1601,7 @@ body {
   max-width: 62ch;
 }
 
-/* subjudul blok (Pendidikan / Pengalaman) — label mono kecil
+/* subjudul blok (Pendidikan / Pengalaman) â€” label mono kecil
    dengan diamond + garis tak berujung, memisahkan dua blok */
 .exp-sub {
   display: flex;
@@ -1638,7 +1645,7 @@ body {
   padding-left: 2.6rem;
 }
 
-/* logo sekolah/kampus — mengambil posisi sel nomor di baris
+/* logo sekolah/kampus â€” mengambil posisi sel nomor di baris
    pendidikan (segrid dengan lingkaran pengalaman), memiring saat hover */
 .edu-badge {
   width: 44px;
@@ -1702,7 +1709,7 @@ body {
 /* ---- menyamarkan widget Spotify ke background web ----
    Spotify mengecat widget memakai warna dominan artwork (biru, dll).
    Karena iframe cross-origin tak bisa di-style, kita jadikan duotone:
-   grayscale membuang warna → widget masuk palet monokrom situs;
+   grayscale membuang warna â†’ widget masuk palet monokrom situs;
    lalu dijajarkan dengan bg web yang aktif. */
 :root:not([data-theme="light"]) .spotify-card iframe {
   /* GELAP: seret bg widget ke level bg web (#0f0e0c),
@@ -1710,12 +1717,12 @@ body {
   filter: grayscale(1) brightness(0.75) contrast(1.55);
 }
 :root[data-theme="light"] .spotify-card iframe {
-  /* TERANG: negatif duotone yang dinetralkan — bg widget → krem khaki
-     (sepia rendah + saturate rendah supaya tak jadi peach), teks → ink */
+  /* TERANG: negatif duotone yang dinetralkan â€” bg widget â†’ krem khaki
+     (sepia rendah + saturate rendah supaya tak jadi peach), teks â†’ ink */
   filter: grayscale(1) invert(1) sepia(0.16) saturate(0.5)
     brightness(1.02) contrast(0.94);
 }
-/* satu lapisan wash SERAGAM untuk seluruh player —
+/* satu lapisan wash SERAGAM untuk seluruh player â€”
    zona judul & daftar lagu mendapat warna bg web dan opacity yang persis
    sama (tanpa gradien), sehingga keduanya identik bg-nya.
    Nilai 0.78: cukup kuat menyeragamkan kedua zona dengan bg web. */
@@ -1742,7 +1749,7 @@ body {
   line-height: 1.08;
   text-transform: lowercase;
   letter-spacing: -0.015em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 0; /* jarak ke meta diatur .contact__meta */
   word-break: break-word;
   overflow-wrap: anywhere;
 }
@@ -1753,7 +1760,7 @@ body {
   transition: color 0.35s;
 }
 /* domain sebagai aksen tenang: dihapus garisnya, lebih kecil,
-   warna muted — nama pengguna tetap jadi tokoh utama */
+   warna muted â€” nama pengguna tetap jadi tokoh utama */
 .contact__big-domain {
   color: var(--muted);
   -webkit-text-stroke: 0;
@@ -1768,8 +1775,8 @@ body {
 .contact__big a:hover .contact__big-domain {
   color: var(--ink);
 }
-/* pasangan tombol salin email — chip mono kecil, hover terisi tinta;
-   setelah menyalin tetap terisi dengan label "TERSALIN ✓" */
+/* pasangan tombol salin email â€” chip mono kecil, hover terisi tinta;
+   setelah menyalin tetap terisi dengan label "TERSALIN âœ“" */
 .contact__mail {
   display: flex;
   align-items: center;
@@ -1802,6 +1809,55 @@ body {
 }
 .contact-copy:active {
   transform: translateY(0) scale(0.97);
+}
+
+/* susunan kontak satu kolom — lapang, tenang, fokus ke email */
+.contact__lead {
+  margin-bottom: 2.8rem;
+}
+/* status ketersediaan — titik berdenyut halus, mono kecil */
+.contact__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact__status i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
+  animation: pulseDot 1.8s var(--ease) infinite;
+}
+@keyframes pulseDot {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+/* baris meta di bawah teks besar — satu kalimat sunyi, bukan panel */
+.contact__meta {
+  margin-top: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.contact__clock {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 .contact__row {
   display: flex;
@@ -1860,7 +1916,7 @@ body {
 }
 
 @media (max-width: 1023.98px) {
-  /* tablet & HP — seperti referensi alfari:
+  /* tablet & HP â€” seperti referensi alfari:
      kartu bergantung di ATAS teks nama; block menempati alur paling atas
      hero sehingga tali melekat dari puncak halaman */
   .hero {
@@ -1868,7 +1924,7 @@ body {
     padding: 0.75rem 0 6rem; /* tali mulai dari puncak halaman;
                                 bawah lega agar CTA tak mepet marquee */
   }
-  /* parallax (geser konten ke bawah saat scroll) dimatikan di responsive —
+  /* parallax (geser konten ke bawah saat scroll) dimatikan di responsive â€”
      di layar pendek tombol "HUBUNGI SAYA" ikut tenggelam menembus band
      marquee bergerak; inline style dikalahkan dengan !important */
   .hero__grid {
@@ -1880,7 +1936,7 @@ body {
     top: auto;
     right: auto;
     bottom: auto;
-    order: -1;                 /* jadi elemen pertama — di atas teks nama */
+    order: -1;                 /* jadi elemen pertama â€” di atas teks nama */
     width: 100%;
     height: clamp(440px, 58svh, 660px);
     margin: 0 0 2.2rem;        /* jeda pasti dengan konten di bawahnya */
@@ -1893,7 +1949,7 @@ body {
     translate: 0 0;
   }
   /* indikator "Scroll" absolute kanan-bawah menumpuk area kartu
-     di tablet — matikan selama lanyard memakai mode responsif */
+     di tablet â€” matikan selama lanyard memakai mode responsif */
   .hero__scroll {
     display: none;
   }
@@ -1901,7 +1957,7 @@ body {
     margin-top: 0.4rem;
   }
 
-  /* --- NAVBAR RESPONSIVE: mode tablet & mobile (≤1024px) --- */
+  /* --- NAVBAR RESPONSIVE: mode tablet & mobile (â‰¤1024px) --- */
   .nav__links-wrapper,
   .nav__links {
     display: none;
@@ -1917,11 +1973,15 @@ body {
   }
   .nav__inner {
     gap: 0.75rem;
+    padding-right: 0; /* tombol hamburger benar-benar mepet ke tepi kanan */
+    padding-left: 0.85rem;
   }
   .nav__brand {
     min-width: 0;
     flex-shrink: 0;
   }
+  /* teks brand tetap tampil di responsive, hanya diringkas:
+     subjudul disembunyikan, nama dirapatkan satu baris */
   .nav__brand-text {
     min-width: 0;
   }
@@ -1950,7 +2010,7 @@ body {
     animation: backdropFade 0.22s var(--ease);
   }
 
-  /* dropdown menu mobile — ringkas, hanya setinggi konten (tidak memenuhi layar) */
+  /* dropdown menu mobile â€” ringkas, hanya setinggi konten (tidak memenuhi layar) */
   .nav__mobile {
     display: block;
     position: fixed;
@@ -2080,7 +2140,7 @@ body {
 }
 
 @media (max-width: 860px) {
-  /* bar footer (© Agung Pandu + sosial) digeser mepet dasar halaman */
+  /* bar footer (Â© Agung Pandu + sosial) digeser mepet dasar halaman */
   .contact {
     padding-bottom: 1.25rem;
   }
@@ -2148,7 +2208,7 @@ body {
     margin-top: 2.4rem;
   }
   .hero__scroll { display: none; }
-  /* hint bisa tertimpa ayunan kartu di layar sempit — sembunyikan */
+  /* hint bisa tertimpa ayunan kartu di layar sempit â€” sembunyikan */
   .lanyard__hint { display: none; }
 }
 
@@ -2180,6 +2240,8 @@ body {
   }
   .nav__inner {
     gap: 0.5rem;
+    padding-right: 0; /* hamburger tetap mepet tepi di HP kecil */
+    padding-left: 0.7rem;
   }
   .nav__right {
     gap: 0.5rem;
@@ -2762,5 +2824,169 @@ body {
   .pagination-btn--next {
     text-align: left;
     align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   PAGE TRANSITION GLITCH â€” perpindahan ke/dari halaman detail.
+   Minimalis & halus: satu garis laser menyapu + halaman bergeser
+   sensorik beberapa piksel. Tidak ada RGB alay, tidak menyilaukan.
+   ============================================================ */
+.page-wrapper {
+  min-height: 100svh;
+}
+/* GLITCH TRANSISI â€” satu jenis dipertegas: jitter + pita invert,
+   laser bersama menyapu di bawahnya */
+.page-wrapper.page--glitch {
+  animation: gJitter1 0.34s linear 1 both;
+  will-change: transform, opacity;
+}
+.page-wrapper.page--glitch::before,
+.page-wrapper.page--glitch::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 2590;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* pita invert atas â€” lebih tinggi & lebih tebal dari sebelumnya */
+.page-wrapper.page--glitch::before {
+  top: 12%;
+  height: 9vh;
+  backdrop-filter: invert(0.92);
+  -webkit-backdrop-filter: invert(0.92);
+  background: color-mix(in srgb, var(--ink) 14%, transparent);
+  animation: gTear1 0.34s steps(3, jump-none) 1;
+}
+.page-wrapper.page--glitch::after {
+  bottom: 10%;
+  height: 5.5vh;
+  backdrop-filter: invert(0.65) contrast(1.4) brightness(0.85);
+  -webkit-backdrop-filter: invert(0.65) contrast(1.4) brightness(0.85);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  animation: gTear1 0.34s steps(3, jump-none) 1 0.04s;
+}
+@keyframes gJitter1 {
+  0% {
+    transform: translateX(0) skewX(0);
+    opacity: 1;
+  }
+  10% {
+    transform: translateX(-1.2%) skewX(-1.9deg);
+    opacity: 0.94;
+  }
+  22% {
+    transform: translateX(1%) skewX(1.4deg);
+    opacity: 1;
+  }
+  34% {
+    transform: translateX(-1.5%) skewX(-0.9deg);
+    opacity: 0.84;
+  }
+  46% {
+    transform: translateX(1%) skewX(1.1deg);
+  }
+  58% {
+    transform: translateX(-1.1%) skewX(-1.4deg);
+    opacity: 1;
+  }
+  72% {
+    transform: translateX(0.7%) skewX(0.7deg);
+    opacity: 0.92;
+  }
+  86% {
+    transform: translateX(-0.4%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) skewX(0);
+    opacity: 1;
+  }
+}
+@keyframes gTear1 {
+  0%,
+  18% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  20%,
+  38% {
+    opacity: 1;
+    transform: translateX(-1.8%);
+  }
+  40%,
+  60% {
+    opacity: 0.8;
+    transform: translateX(1.4%);
+  }
+  62%,
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+
+/* keadaan normal: tanpa efek apa pun */
+.page-wrapper.page--ready {
+  animation: none;
+}
+
+/* garis laser tipis menyapu layar dari atas ke bawah, jamban warna tinta */
+.page-glitch-line {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  z-index: 2600;
+  pointer-events: none;
+  background: var(--ink);
+  box-shadow:
+    0 0 18px color-mix(in srgb, var(--ink) 70%, transparent),
+    0 -14px 0 color-mix(in srgb, var(--ink) 22%, transparent);
+  animation: laserSweep 0.34s var(--ease) 1 both;
+}
+@keyframes laserSweep {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100svh);
+    opacity: 0;
+  }
+}
+/* preferensi pengguna: kurangi gerakan â€” variasi apa pun dipadamkan,
+   cukup fade garis tanpa jitter/robekan */
+@media (prefers-reduced-motion: reduce) {
+  .page-wrapper.page--glitch,
+  .page-wrapper.page--glitch::before,
+  .page-wrapper.page--glitch::after {
+    animation: none !important;
+  }
+  .page-wrapper.page--glitch::before,
+  .page-wrapper.page--glitch::after {
+    opacity: 0 !important;
+  }
+  .page-glitch-line {
+    animation: laserFade 0.34s ease 1 both;
+  }
+  @keyframes laserFade {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 }

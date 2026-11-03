@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useActiveSection } from "../hooks/useActiveSection.js";
+import { goToSection } from "../hooks/useGoToSection.js";
 
 const SECTIONS = [
   { id: "beranda", label: "Beranda" },
@@ -47,6 +48,10 @@ export default function SectionIndicator() {
             href={`#${s.id}`}
             className={active === s.id ? "active" : ""}
             aria-label={s.label}
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection(`#${s.id}`);
+            }}
           >
             <span className="side-nav__label">{s.label}</span>
             <i />

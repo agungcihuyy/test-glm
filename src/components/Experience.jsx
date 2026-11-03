@@ -13,7 +13,7 @@ const EDUCATION = [
   {
     logo: "/images/logo-sekolah1.png",
     alt: "Logo SMA Negeri 2 Tabanan",
-    period: "2019 — 2022",
+    period: "2022 — 2025",
     role: "SMA Negeri 2 Tabanan",
     place: "SMA Negeri 2 Tabanan",
     desc: "Jurusan IPA; Tertarik dengan dunia kesehatan dan teknologi.",
@@ -29,7 +29,7 @@ const EDUCATION = [
   {
     logo: "/images/logo-sekolah3.png",
     alt: "Logo SD Negeri 6 Delod Peken",
-    period: "2019 — 2022",
+    period: "2013 — 2019",
     role: "SD Negeri 6 Delod Peken",
     place: "SD Negeri 6 Delod Peken",
     desc: "Mulai mengetahui teknologi.",
@@ -39,29 +39,29 @@ const EDUCATION = [
 /* === pengalaman kerja: kolom kanan (terbaru di atas) === */
 const EXPERIENCES = [
   {
-    period: "2024 — Sekarang",
-    role: "Freelance Fullstack Developer",
+    period: "2025 — Sekarang",
+    role: "Learning and Development",
     place: "Mandiri / Remote",
-    desc: "Mengerjakan proyek web untuk klien startup & UMKM: dari desain UI, frontend React, hingga API Node.js.",
+    desc: "Belajar dan mengembangkan kemampuan teknis untuk masa depan.",
   },
   {
-    period: "2022 — 2024",
-    role: "Frontend Developer",
-    place: "PT Kreatif Digital",
-    desc: "Membangun dan merawat 8+ aplikasi web internal, memimpin migrasi codebase lama ke React + TypeScript.",
+    period: "2024 — Sekarang",
+    role: "Cleaning Laptop",
+    place: "Mandiri / Remote",
+    desc: "Membersihkan dan merawat laptop untuk meningkatkan performa dan daya tahan.",
   },
-  {
-    period: "2021 — 2022",
-    role: "Junior Web Developer",
-    place: "Studio Narasi",
-    desc: "Membuat landing page dan CMS mini untuk klien agensi; mulai mendalami animasi dan aksesibilitas.",
-  },
-  {
-    period: "2020 — 2021",
-    role: "Magang UI/UX Design",
-    place: "Lokalab",
-    desc: "Merancang wireframe & prototipe Figma, sistem desain internal, dan riset usability sederhana.",
-  },
+  // {
+  //   period: "2021 — 2022",
+  //   role: "Junior Web Developer",
+  //   place: "Studio Narasi",
+  //   desc: "Membuat landing page dan CMS mini untuk klien agensi; mulai mendalami animasi dan aksesibilitas.",
+  // },
+  // {
+  //   period: "2020 — 2021",
+  //   role: "Magang UI/UX Design",
+  //   place: "Lokalab",
+  //   desc: "Merancang wireframe & prototipe Figma, sistem desain internal, dan riset usability sederhana.",
+  // },
 ];
 
 /* baris pendidikan — pola baris pengalaman, tapi tanpa nomor:
