@@ -420,14 +420,14 @@ const drawFront = (canvas, palette, photo) => {
   } catch (e) {
     /* diabaikan */
   }
-  ctx.fillText("FULLSTACK DEVELOPER", w / 2, py + ph + 182);
+  ctx.fillText("DENGVELOPER", w / 2, py + ph + 182);
   ctx.font = "500 27px 'JetBrains Mono', monospace";
   try {
     ctx.letterSpacing = "7px";
   } catch (e) {
     /* diabaikan */
   }
-  ctx.fillText("UI ENGINEER · REACT · NODE.JS", w / 2, py + ph + 230);
+  ctx.fillText("ENGINEER · LARAVEL · DATABASE", w / 2, py + ph + 230);
   try {
     ctx.letterSpacing = "0px";
   } catch (e) {
