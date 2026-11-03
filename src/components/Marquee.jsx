@@ -1,4 +1,4 @@
-const ITEMS = ["Agung Pandu", "Web Developer", "Mari Bekerja Sama", "Fullstack"];
+const ITEMS = ["Agung Pandu", "Dengveloper", "Let's Work Together", "Malas"];
 
 function Row({ ariaHidden = false, reverse = false }) {
   const seq = [...ITEMS, ...ITEMS];

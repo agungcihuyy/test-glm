@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { useScramble } from "../hooks/useScramble.js";
 import { goToSection } from "../hooks/useGoToSection.js";
 
-const TECH_TAGS = ["React", "TypeScript", "Node.js", "Tailwind", "Figma"];
+const TECH_TAGS = ["Laravel", "TypeScript", "Vite", "Tailwind", "PostgreSQL"];
 
 // three.js dimuat terpisah (lazy) agar halaman awal tetap ringan
 const Badge3D = lazy(() => import("./Badge3D.jsx"));
@@ -175,7 +175,7 @@ export default function Hero({ ready }) {
           <div className="lanyard">
             <Badge3D />
             <span className="lanyard__hint">
-              Seret / ketuk kartunya — fisika 3D real-time
+              
             </span>
           </div>
         </Suspense>

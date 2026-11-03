@@ -12,7 +12,7 @@ function Portrait() {
   return (
     <figure className="about__photo">
       <img
-        src="/images/portrait.jpg"
+        src="/images/about.jpeg"
         alt="Foto Agung Pandu"
         onError={(e) => {
           // fallback ke placeholder bila foto belum disediakan
