@@ -2839,7 +2839,7 @@ body {
    laser bersama menyapu di bawahnya */
 .page-wrapper.page--glitch {
   animation: gJitter1 0.34s linear 1 both;
-  will-change: transform, opacity;
+  will-change: transform; /* hanya transform — komposit GPU, tanpa repaint */
 }
 .page-wrapper.page--glitch::before,
 .page-wrapper.page--glitch::after {
@@ -2852,80 +2852,80 @@ body {
   opacity: 0;
 }
 
-/* pita invert atas â€” lebih tinggi & lebih tebal dari sebelumnya */
+/* pita glitch atas — satu-satunya yang tetap invert, dipangkas:
+   tingginya dirapatkan & tanpa filter ganda agar tidak menggorok FPS */
 .page-wrapper.page--glitch::before {
   top: 12%;
-  height: 9vh;
-  backdrop-filter: invert(0.92);
-  -webkit-backdrop-filter: invert(0.92);
-  background: color-mix(in srgb, var(--ink) 14%, transparent);
+  height: 6vh;
+  backdrop-filter: invert(0.88);
+  -webkit-backdrop-filter: invert(0.88);
+  will-change: opacity, transform;
   animation: gTear1 0.34s steps(3, jump-none) 1;
 }
+/* pita bawah — garis-garis digital murni (tanpa backdrop-filter, murah):
+   garis tinta tipis-tipis, seperti baris sinyal yang rusak */
 .page-wrapper.page--glitch::after {
   bottom: 10%;
-  height: 5.5vh;
-  backdrop-filter: invert(0.65) contrast(1.4) brightness(0.85);
-  -webkit-backdrop-filter: invert(0.65) contrast(1.4) brightness(0.85);
-  background: color-mix(in srgb, var(--ink) 8%, transparent);
+  height: 4.5vh;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 4px,
+      color-mix(in srgb, var(--ink) 34%, transparent) 4px 6px
+    ),
+    color-mix(in srgb, var(--ink) 6%, transparent);
+  will-change: opacity, transform;
   animation: gTear1 0.34s steps(3, jump-none) 1 0.04s;
 }
 @keyframes gJitter1 {
-  0% {
-    transform: translateX(0) skewX(0);
-    opacity: 1;
+  /* transformasi-bornya: translate3d = tanpa mengubah opacity,
+     semua digambar di lapisan GPU — halus tanpa terasa lag */
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) skewX(0);
   }
   10% {
-    transform: translateX(-1.2%) skewX(-1.9deg);
-    opacity: 0.94;
+    transform: translate3d(-1.2%, 0, 0) skewX(-1.9deg);
   }
   22% {
-    transform: translateX(1%) skewX(1.4deg);
-    opacity: 1;
+    transform: translate3d(1%, 0, 0) skewX(1.4deg);
   }
   34% {
-    transform: translateX(-1.5%) skewX(-0.9deg);
-    opacity: 0.84;
+    transform: translate3d(-1.5%, 0, 0) skewX(-0.9deg);
   }
   46% {
-    transform: translateX(1%) skewX(1.1deg);
+    transform: translate3d(1%, 0, 0) skewX(1.1deg);
   }
   58% {
-    transform: translateX(-1.1%) skewX(-1.4deg);
-    opacity: 1;
+    transform: translate3d(-1.1%, 0, 0) skewX(-1.4deg);
   }
   72% {
-    transform: translateX(0.7%) skewX(0.7deg);
-    opacity: 0.92;
+    transform: translate3d(0.7%, 0, 0) skewX(0.7deg);
   }
   86% {
-    transform: translateX(-0.4%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(0) skewX(0);
-    opacity: 1;
+    transform: translate3d(-0.4%, 0, 0) skewX(0);
   }
 }
 @keyframes gTear1 {
   0%,
   18% {
     opacity: 0;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   20%,
   38% {
     opacity: 1;
-    transform: translateX(-1.8%);
+    transform: translate3d(-1.8%, 0, 0);
   }
   40%,
   60% {
     opacity: 0.8;
-    transform: translateX(1.4%);
+    transform: translate3d(1.4%, 0, 0);
   }
   62%,
   100% {
     opacity: 0;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -2946,8 +2946,8 @@ body {
   pointer-events: none;
   background: var(--ink);
   box-shadow:
-    0 0 18px color-mix(in srgb, var(--ink) 70%, transparent),
-    0 -14px 0 color-mix(in srgb, var(--ink) 22%, transparent);
+    0 0 10px color-mix(in srgb, var(--ink) 65%, transparent),
+    0 -12px 0 color-mix(in srgb, var(--ink) 22%, transparent);
   animation: laserSweep 0.34s var(--ease) 1 both;
 }
 @keyframes laserSweep {
