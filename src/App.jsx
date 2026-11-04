@@ -83,15 +83,15 @@ function Layout() {
     }, TRANSITION);
   }, []);
 
-  // Handler kembali ke portofolio utama: glitch terasa tapi smooth
+  // Handler kembali ke halaman awal: glitch terasa tapi smooth
   const handleBack = useCallback(() => {
     setIsGlitching(true);
 
     setTimeout(() => {
       setSelectedProject(null);
       window.history.pushState({}, "", window.location.pathname);
-      const el = document.getElementById("proyek");
-      if (el) el.scrollIntoView({ behavior: "instant" });
+      // pendaratan di paling atas halaman awal: efek
+      // [loading, selectedProject] men-scroll ke 0 saat state null
     }, 170);
 
     setTimeout(() => {

@@ -105,7 +105,9 @@ export default function Hero({ ready }) {
         className="container hero__grid"
         style={{
           transform: `translate3d(0, ${Math.min(offset * 0.18, 150)}px, 0)`,
-          opacity: Math.max(0, 1 - offset / 950),
+          /* fade lebih pelan: taip 200px pertama penuh, lalu melebur
+             dalam ~1700px — dan tidak pernah benar-benar hilang */
+          opacity: Math.max(0.25, 1 - Math.max(0, offset - 200) / 1700),
         }}
       >
         <div className="hero__toprow">

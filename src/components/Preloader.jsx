@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 /**
- * Preloader: logo situs "AP" + bar loading & persentase di bawahnya,
- * dengan glitch acak, lalu ditutup tirai.
+ * Preloader: angka persenan besar dengan glitch acak,
+ * di bawahnya tulisan "Memuat assets" — lalu ditutup tirai.
  */
 export default function Preloader({ onDone }) {
   const [count, setCount] = useState(0);
@@ -14,9 +14,9 @@ export default function Preloader({ onDone }) {
     const timers = [];
     let raf;
     const start = performance.now();
-    const DURATION = 1700;
+    const DURATION = 2600; // loading awal dirasakan lebih lama
 
-    // glitch acak pada logo
+    // glitch acak pada angka persenan
     const scheduleGlitch = () => {
       if (!alive) return;
       const next = 140 + Math.random() * 360;
@@ -59,19 +59,22 @@ export default function Preloader({ onDone }) {
     };
   }, [onDone]);
 
+  const pct = `${count}%`;
+
   return (
     <div className={`preloader ${exiting ? "preloader--exit" : ""}`}>
-      <div className={`preloader__logo ${glitching ? "preloader__logo--glitch" : ""}`}>
-        <span>AP</span>
+      <div
+        className={`preloader__pct ${glitching ? "preloader__pct--glitch" : ""}`}
+        data-text={`${count}%`}
+      >
+        {count}
+        <span className="preloader__pct-mark">%</span>
       </div>
-
       <div className="preloader__load">
         <div className="preloader__load-bar">
           <i style={{ width: `${count}%` }} />
         </div>
-        <span className="preloader__pct">
-          Memuat — {String(count).padStart(3, "0")}%
-        </span>
+        <span className="preloader__label">Memuat assets...</span>
       </div>
     </div>
   );

@@ -54,7 +54,8 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
-/* transisi tema per elemen â€” overlay glitch yang membuat transisi terasa "dipedas" */
+/* transisi tema per elemen — overlay glitch yang membuat transisi
+   terasa "digebus"; warna berpindah keras di balik overlay */
 :root.theme-switching * {
   transition: none !important;
 }
@@ -116,7 +117,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 2.2rem;
 }
 
 .preloader--exit {
@@ -127,79 +128,86 @@ body {
   100% { clip-path: inset(0 0 100% 0); }
 }
 
-/* kotak logo "AP" */
-.preloader__logo {
-  width: 106px;
-  height: 106px;
-  background: #ede6d8;
-  color: #0f0e0c;
-  display: grid;
-  place-items: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 2.1rem;
-  letter-spacing: 0.03em;
+/* angka persenan — bersih & tenang: Space Grotesk sedang,
+   angka krem + "%" kecil muted; tanpa huruf megah yang berlebihan */
+.preloader__pct {
   position: relative;
-  animation: logoIn 0.75s var(--ease) both;
+  display: flex;
+  align-items: baseline;
+  gap: 0.16em;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 8.5vw, 4rem);
+  letter-spacing: 0;
+  line-height: 1;
+  color: #ede6d8;
+  font-variant-numeric: tabular-nums;
+  animation: logoIn 0.7s var(--ease) both;
+}
+.preloader__pct-mark {
+  font-size: 0.52em;
+  font-weight: 400;
+  color: #8d8574;
 }
 @keyframes logoIn {
   from {
-    transform: scale(0.55);
+    transform: scale(0.72);
     opacity: 0;
     clip-path: inset(50% 0 50% 0);
   }
 }
 
-/* salinan glitch (abu-abu, muncul saat jitter) */
-.preloader__logo::before,
-.preloader__logo::after {
-  content: "AP";
+/* salinan glitch — halus: offset tipis, kado abu, tidak berhias */
+.preloader__pct::before,
+.preloader__pct::after {
+  content: attr(data-text);
   position: absolute;
   inset: 0;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: baseline;
+  gap: 0.16em;
   opacity: 0;
   pointer-events: none;
 }
-.preloader__logo::before { color: #b8ae97; }
-.preloader__logo::after { color: #6e6752; }
+.preloader__pct::before { color: #b8ae97; }
+.preloader__pct::after { color: #6e6752; }
 
-.preloader__logo--glitch {
-  animation: logoGlitch 0.32s steps(2) infinite;
+.preloader__pct--glitch {
+  animation: pctGlitch 0.3s steps(2) infinite;
 }
-.preloader__logo--glitch::before {
-  opacity: 0.9;
-  transform: translate(-5px, -2px);
-  clip-path: inset(28% 0 52% 0);
+.preloader__pct--glitch::before {
+  opacity: 0.5;
+  transform: translate(-2px, -1px);
+  clip-path: inset(30% 0 50% 0);
 }
-.preloader__logo--glitch::after {
-  opacity: 0.9;
-  transform: translate(5px, 2px);
-  clip-path: inset(58% 0 18% 0);
+.preloader__pct--glitch::after {
+  opacity: 0.5;
+  transform: translate(2px, 1px);
+  clip-path: inset(55% 0 22% 0);
 }
 
-@keyframes logoGlitch {
+@keyframes pctGlitch {
   0% { transform: translate(0); }
-  25% { transform: translate(-3px, 2px) skewX(1.5deg); }
-  50% { transform: translate(3px, -2px); }
-  75% { transform: translate(-2px, -1px) skewX(-1deg); }
-  100% { transform: translate(2px, 1px); }
+  25% { transform: translate(-2px, 1px) skewX(0.6deg); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, 0) skewX(-0.4deg); }
+  100% { transform: translate(1px, 0); }
 }
 
-/* bar loading di bawah logo */
+/* garis progress tipis + status di bawah angka */
 .preloader__load {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem;
   animation: loadIn 0.8s var(--ease) 0.3s both;
 }
 @keyframes loadIn {
   from { opacity: 0; transform: translateY(10px); }
 }
 .preloader__load-bar {
-  width: min(190px, 46vw);
-  height: 1px;
+  width: min(380px, 62vw);
+  height: 2px;
   background: #2b2822;
   overflow: hidden;
 }
@@ -207,14 +215,17 @@ body {
   display: block;
   height: 100%;
   background: #ede6d8;
-  transition: width 0.12s linear;
+  transition: width 0.15s linear;
 }
-.preloader__pct {
+.preloader__label {
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.32em;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #8d8574;
+}
+@keyframes loadIn2 {
+  from { opacity: 0; transform: translateY(10px); }
 }
 
 /* ============================================================
@@ -330,6 +341,7 @@ body {
 }
 
 .nav__inner {
+  position: relative; /* jangkar .nav__links-wrapper yang absolute di tengah */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -390,7 +402,15 @@ body {
   color: var(--muted);
 }
 
-/* --- link tengah --- */
+/* --- link tengah: benar-benar di tengah halaman (bukan "sisa ruang" flex) ---
+   absolute + translate membuat posisinya independen dari lebar
+   brand (kiri) dan tombol kanan yang tak sama besar */
+.nav__links-wrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
 .nav__links {
   display: flex;
   gap: 2.2rem;
@@ -2467,10 +2487,13 @@ body {
 .project-detail__title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-size: clamp(2.2rem, 9vw, 4.5rem); /* 9vw: mengecil ikut layar,
+     kata panjang seperti "TAMBLINGAN" tak lagi mensentup tepi */
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-transform: uppercase;
+  overflow-wrap: anywhere; /* pengaman: kata terpanjang boleh patah,
+     tidak pernah terpotong tanpa disadari */
   margin-bottom: 0.8rem;
 }
 .project-detail__subtitle {
