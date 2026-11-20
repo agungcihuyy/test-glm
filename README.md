@@ -1,222 +1,226 @@
 <div align="center">
 
-# ⬛ AP — Portofolio Agung Pandu
+# AP — Portofolio Agung Pandu
 
 **Fullstack Developer & UI Engineer**
 
-Website portofolio personal bertema **hitam · putih · krem** — dengan preloader glitch,
-mode gelap–terang beranimasi, dan **kartu lanyard 3D interaktif** berbasis fisika,
-diadaptasi langsung dari komponen [ReactBits Lanyard](https://reactbits.dev/).
+Portofolio personal dengan karakter hitam · putih · krem: tipografi tegas, animasi yang
+tidak berlebihan, dan satu interaksi khas berupa **kartu lanyard 3D** di halaman utama.
 
 [![React](https://img.shields.io/badge/React-18-149ECA?logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-r160-000000?logo=threedotjs&logoColor=white)](https://threejs.org/)
-[![License](https://img.shields.io/badge/Lisensi-MIT-8B7355)](#-lisensi)
+[![CSS](https://img.shields.io/badge/CSS-Murni-663399?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 </div>
 
 ---
 
-## 👀 Sekilas Tampilan
+## Tentang proyek
 
-| Desktop | Mobile |
-| :---: | :---: |
-| <!-- TODO: simpan screenshot ke docs/screenshots/desktop.png lalu aktifkan baris di bawah --><!-- ![Desktop](docs/screenshots/desktop.png) --> | <!-- TODO: simpan screenshot ke docs/screenshots/mobile.png lalu aktifkan baris di bawah --><!-- ![Mobile](docs/screenshots/mobile.png) --> |
+Situs ini dibangun sebagai ruang pamer karya: profil singkat, keahlian, daftar proyek,
+perjalanan pendidikan dan karier, playlist Spotify, serta halaman kontak. Setiap proyek
+punya halaman detail sendiri dengan transisi glitch singkat saat berpindah.
 
-> 💡 Pemilik repositori: letakkan screenshot di `docs/screenshots/` dan hapus komentar `<-- -->`
-> pada tabel di atas agar gambar terpasang di GitHub.
-
----
-
-## ✨ Fitur
-
-### 🎬 Pengalaman & Animasi
-- **Preloader** — logo "AP" dengan efek glitch + loading bar berpersentase
-- **Judul hero auto-fit** — teks scramble/glitch yang ukuran fontnya dihitung via JS,
-  jadi "AGUNG PANDU" / "DEVELOPER" selalu pas satu layar, tidak pernah terpotong
-- **Marquee** dua arah berlawanan, aman dari tumpang tindih tombol
-- **Parallax** ringan pada konten hero di desktop
-- **Mode gelap / terang** — toggle di navbar dengan **transisi glitch layar penuh**
-  setiap pergantian tema
-- **Scroll-spy lengkap** — progress bar di atas, dot-nav di sisi kanan (desktop),
-  link strategis menjadi aktif, dan menu hamburger berisi semua section di responsive
-
-### 🪪 Lanyard 3D (signature interaction)
-Kartu ID 3D yang menggantung dari tali di hero — vanilla Three.js **tanpa** library
-fisika eksternal:
-- Simulasi **tali elastis kustom** (4 joint + iterative solver, substep hingga 960 Hz)
-  plus **kartu rigid-body** dengan inersia, drag udara & damping
-- Kartu *glossy* (`MeshPhysicalMaterial` + clearcoat + grain), cincin & klem logam,
-  slot lubang di wajah kartu
-- **Tali berdesain** — strip dengan normal-map anyaman + jahitan tepi, mengikuti
-  kurva fisika 72 sampel
-- **Seret** kartunya (grab & pin), **lepas** akan berayun balik, **ketuk cepat**
-  untuk membalik 360°
-- **Breeze** halus membuat tali bergoyang sendiri; *intro* masuk dari samping
-- Wajah kartu dirender ke canvas (foto, nama, peran, barcode) dan
-  **otomatis di-repaint mengikuti tema**
-- Responsif: di ≤1023px kartu menggantung **di atas teks nama** dengan tali
-  melekat dari puncak halaman — nge-*pause* otomatis saat keluar viewport
-
-### 🧩 Konten
-- Hero · Tentang · Keahlian · Proyek (4 mockup SVG) · Journey (Pendidikan
-  & Pengalaman dua kolom) · **Playlist Spotify** (duotone mengikuti tema) ·
-  Kontak + sosial media
-- Navbar responsif + panel menu hamburger, indikator section & progress bar
+Seluruh tampilan memakai palet monokrom yang sama di mode terang dan gelap. Pilihan mode
+tersimpan di browser, sehingga tetap bertahan setelah halaman di-refresh.
 
 ---
 
-## 🛠️ Teknologi
+## Sorotan
+
+### Pengalaman halaman
+
+- **Preloader persentase** — angka yang bertambah, garis progres tipis, dan keterangan
+  "Memuat assets..." sebelum halaman dibuka.
+- **Hero dengan kartu lanyard 3D** — kartu ID berbahan kaca menggantung dari tali,
+  bisa diseret dan dilepas supaya berayun; ketuk cepat untuk membaliknya.
+- **Glitch terukur** — pada judul, pergantian tema, dan transisi antarhalaman proyek.
+  Efeknya sengaja dibuat singkat agar tidak mengganggu membaca.
+- **Mode terang / gelap** — disimpan otomatis dan diterapkan sebelum halaman selesai
+  dimuat agar tidak terjadi kedip saat refresh.
+- **Navigasi responsif** — progress bar, indikator section, menu hamburger, dan
+  pintasan scroll yang konsisten di semua ukuran layar.
+- **Halaman detail proyek** — deskripsi, spesifikasi, tautan, dan navigasi ke proyek
+  sebelumnya / berikutnya lewat `?project=<id>`.
+
+### Lanyard 3D
+
+Dibangun langsung dengan Three.js tanpa library fisika tambahan:
+
+- Simulasi tali elastis 4 joint dengan solver iteratif, plus kartu *rigid-body*
+  yang punya inersia dan redaman.
+- Bahan kartu glossy dengan clearcoat; cincin, klem logam, dan lubang tali.
+- Tali dengan tekstur anyaman dan jahitan tepi mengikuti kurva fisika.
+- Wajah kartu digambar ke canvas — foto, nama, peran, barcode — dan digambar ulang
+  otomatis mengikuti tema yang aktif.
+- Berhenti merender saat kartu keluar dari layar, dan ukurannya disesuaikan di mobile.
+
+### Konten
+
+Hero · Tentang · Keahlian · Proyek · Journey (Pendidikan & Pengalaman) · Playlist
+Spotify · Kontak. Gambar proyek dan aset lainnya sudah dioptimalkan untuk web.
+
+---
+
+## Teknologi
 
 | Teknologi | Peran |
 |---|---|
-| [React 18](https://react.dev/) | UI & state (tanpa UI framework) |
-| [Vite 5](https://vitejs.dev/) | Dev server & bundler |
-| [Three.js r160](https://threejs.org/) | Lanyard 3D + lingkungan PMREM |
-| CSS murni | Tema, animasi, tata letak — tanpa Tailwind/Bootstrap |
-| [Syne](https://fonts.google.com/specimen/Syne) · [Space Grotesk](https://fonts.google.com/specimen/Space_Grotesk) · [JetBrains Mono](https://fonts.google.com/specimen/JetBrains_Mono) | Tipografi display · teks · mono |
+| [React 18](https://react.dev/) | UI dan state |
+| [Vite 5](https://vitejs.dev/) | Dev server dan bundler |
+| [Three.js](https://threejs.org/) | Lanyard 3D dan lingkungan pencahayaan |
+| CSS murni | Tema, tata letak, dan animasi — tanpa framework CSS |
+| [Syne](https://fonts.google.com/specimen/Syne) · [Space Grotesk](https://fonts.google.com/specimen/Space_Grotesk) · [JetBrains Mono](https://fonts.google.com/specimen/JetBrains_Mono) | Tipografi display, teks, dan kode |
 
-> ⚡ **Performa:** bundle utama ±167 KB, chunk lanyard ±511 KB — di-*lazy-load*
-> hanya saat dibutuhkan. Total gzip ±192 KB.
+Bundle utama sekitar 183 KB, dengan chunk lanyard sekitar 511 KB yang dimuat
+malas hanya saat dibutuhkan.
 
 ---
 
-## 🚦 Mulai Cepat
+## Menjalankan proyek
 
 ```bash
-# 1) clone & masuk
-git clone https://github.com/<username>/<repo>.git
-cd <repo>
-
-# 2) pasang dependensi
+# pasang dependensi
 npm install
 
-# 3) mode pengembangan → http://localhost:5173
+# mode pengembangan → http://localhost:5173
 npm run dev
 
-# 4) build produksi (keluaran ke dist/)
+# build produksi (keluaran di folder dist/)
 npm run build
 
-# 5) pratinjau hasil build
+# pratinjau hasil build
 npm run preview
 ```
 
+Setelah mengubah logika canvas atau tema, lakukan *hard refresh* agar perubahan
+benar-benar termuat.
+
 ---
 
-## 📁 Struktur Proyek
+## Struktur proyek
 
 ```
-portoAI2/
+portfolio/
 ├── public/
-│   ├── favicon.svg              # logo AP (favicon + theme-color)
-│   └── images/
-│       ├── portrait.svg         # fallback avatar (letakkan portrait.jpg milikmu)
-│       ├── project-1..4.svg     # mockup gambar proyek
-│       └── spotify-cover.png    # cover krem untuk playlist Spotify
+│   ├── favicon.svg
+│   └── images/                 # foto profil, gambar proyek, cover playlist
 ├── src/
 │   ├── components/
-│   │   ├── Badge3D.jsx          # Lanyard 3D (fisika custom, vanilla three.js)
-│   │   ├── Preloader.jsx        # layar loading AP + persentase
-│   │   ├── GlitchOverlay.jsx    # overlay glitch saat ganti tema
-│   │   ├── Navbar.jsx           # navbar + scroll-spy + menu hamburger
-│   │   ├── Hero.jsx             # judul auto-fit + glitch + lazy lanyard
-│   │   ├── Marquee.jsx          # teks berjalan dua arah
+│   │   ├── Badge3D.jsx          # lanyard 3D + fisika tali
+│   │   ├── Preloader.jsx        # layar loading persentase
+│   │   ├── GlitchOverlay.jsx    # overlay pergantian tema
+│   │   ├── Navbar.jsx           # navbar, menu responsive, scroll-spy
+│   │   ├── Hero.jsx             # judul hero + lanyard lazy-loaded
+│   │   ├── Marquee.jsx
 │   │   ├── About.jsx / Skills.jsx
-│   │   ├── Projects.jsx / Experience.jsx
-│   │   ├── Playlist.jsx         # section embed playlist Spotify
-│   │   ├── Contact.jsx          # kontak + bar footer (© + sosial media)
-│   │   ├── SocialIcons.jsx / Reveal.jsx
-│   │   └── SectionIndicator.jsx # progress bar + dot nav
+│   │   ├── Projects.jsx / ProjectDetail.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Playlist.jsx
+│   │   ├── Contact.jsx
+│   │   ├── SectionIndicator.jsx / SocialIcons.jsx / Reveal.jsx
 │   ├── context/
-│   │   └── ThemeContext.jsx     # state tema + flag switching (glitch overlay)
+│   │   └── ThemeContext.jsx     # tema + preferensi tersimpan
+│   ├── data/
+│   │   └── projects.js          # daftar proyek
 │   ├── hooks/
-│   │   ├── useScramble.js       # efek teks scramble
-│   │   ├── useInView.js         # animasi masuk saat terlihat
-│   │   └── useActiveSection.js  # scroll-spy
-│   ├── App.jsx                  # komposisi semua section + gate preloader
-│   └── index.css                # seluruh style, tema, responsive & animasi
-├── PANDUAN.md                   # 👤 panduan pemakaian & penggantian konten
-└── .gitignore
+│   │   ├── useScramble.js
+│   │   ├── useInView.js
+│   │   ├── useActiveSection.js
+│   │   └── useGoToSection.js
+│   ├── App.jsx                  # komposisi halaman + transisi proyek
+│   └── index.css                # seluruh gaya, tema, dan animasi
+├── PANDUAN.md                   # panduan mengganti konten
+└── index.html
 ```
 
 ---
 
-## 🎨 Kustomisasi
+## Kustomisasi
 
-### 📸 Foto profil
-Letakkan foto di `public/images/portrait.jpg` — otomatis dipakai oleh wajah kartu
-lanyard & section Tentang. Tanpa file itu, sistem memakai fallback `portrait.svg`.
+### Foto profil
 
-### ✏️ Isi konten
-Semua data (proyek, pengalaman, kontak, sosial media) adalah placeholder di
-masing-masing `src/components/*.jsx` — cukup sunting array/string-nya.
-**Panduan lengkap langkah-demi-langkah: lihat [PANDUAN.md](PANDUAN.md).**
+Letakkan foto di `public/images/portrait.jpg`. Foto itu dipakai baik oleh wajah kartu
+lanyard maupun bagian Tentang; `portrait.svg` hanya dipakai sebagai cadangan.
 
-### 🎨 Palet warna
-Tema dikelola lewat atribut `data-theme` pada `<html>` (`ThemeContext.jsx`).
-Sunting blok variabel di awal `src/index.css`:
+### Isi dan data
+
+Teks profil ada di masing-masing komponen `src/components/*.jsx`, sementara daftar
+proyek ada di `src/data/projects.js`. Langkah lengkap penggantian konten ada di
+[PANDUAN.md](PANDUAN.md).
+
+### Warna
+
+Variabel tema didefinisikan di bagian awal `src/index.css` melalui atribut
+`data-theme` pada `<html>`:
 
 ```css
 :root[data-theme="light"] { --bg: ...; --ink: ...; }
 :root[data-theme="dark"]  { --bg: ...; --ink: ...; }
 ```
 
-Palet kartu & tali lanyard ada di objek `PALETTES` pada `Badge3D.jsx`.
+Warna kartu dan tali lanyard diatur terpisah lewat objek `PALETTES` di `Badge3D.jsx`.
 
-### 🪀 Rasa fisika lanyard
-Tuning di `settingsRef.current` (`Badge3D.jsx`):
+### Perilaku lanyard
 
-| Param | Fungsi |
+Tuning ada di `settingsRef.current` (`Badge3D.jsx`):
+
+| Parameter | Fungsi |
 |---|---|
 | `elasticity` | kekakuan tali (0–1) |
-| `damping` | seberapa cepat gerakan tenang (0–1) |
-| `breeze` | kekuatan angin idle (0–1) |
+| `damping` | kecepatan gerakan tenang (0–1) |
+| `breeze` | kekuatan angin saat idle (0–1) |
 | `gravity` | berat ayunan (0–3) |
-| `strapLength` | jarak gantung kartu ke bawah |
+| `strapLength` | jarak gantung kartu |
 | `size` | skala kartu dalam area pandang |
 | `strapWidth` | lebar tali |
 | `metal` | `silver` / `gold` / `graphite` |
 
-### 🎵 Playlist Spotify
-Ganti konstanta `PLAYLIST_ID` di `src/components/Playlist.jsx` dengan ID playlist
-milikmu (string setelah `playlist/` pada URL Spotify).
+### Playlist Spotify
+
+Ganti `PLAYLIST_ID` di `src/components/Playlist.jsx` dengan ID playlist yang diinginkan
+— string setelah `/playlist/` pada URL Spotify.
 
 ---
 
-## 🚀 Deploy
+## Deploy
 
 <details>
-<summary><b>GitHub Pages</b> (klik untuk melangkah)</summary>
+<summary><b>GitHub Pages</b></summary>
 
-1. Pada `vite.config.js`, tambahkan `base: "/<nama-repo>/"`.
-2. `npm run build`, lalu push folder `dist/` dengan package `gh-pages`
+1. Tambahkan `base: "/<nama-repo>/"` pada `vite.config.js`.
+2. Jalankan `npm run build`, lalu unggah folder `dist/`, misalnya dengan `gh-pages`:
 
    ```bash
    npm install -D gh-pages
    npx gh-pages -d dist
    ```
-3. Di GitHub → Settings → Pages → pilih branch `gh-pages`.
+
+3. Di GitHub, buka Settings → Pages dan pilih branch `gh-pages`.
+
 </details>
 
 <details>
 <summary><b>Vercel / Netlify</b></summary>
 
-1. Push repo ke GitHub.
-2. Impor repo di dashboard Vercel/Netlify.
-3. Build command: `npm run build` · Output directory: `dist` — selesai, otomatis
-   men-deploy tiap commit.
+1. Push repositori ke GitHub.
+2. Impor repositori di dashboard Vercel atau Netlify.
+3. Build command: `npm run build` · Output directory: `dist`.
+
 </details>
 
 ---
 
-## 📝 Catatan
+## Catatan
 
-- Palet sengaja monokrom + krem — tanpa aksen warna agar desain tetap *muted*.
-- Widget Spotify diefekkan lewat CSS filter + lapisan wash di elemen `<iframe>`
-  (lintas-domain, tidak bisa distyle langsung dari sisi web).
-- `Badge3D.jsx` membedakan diri dari ReactBits versi umum: wajah kartu digambar
-  lewat canvas & terhubung tema global (bukan prop `frontImage`).
+- Palet sengaja dibatasi pada hitam, putih, dan krem agar fokus tetap pada konten.
+- Tampilan widget Spotify diwarnai ulang lewat filter CSS pada `<iframe>`; embed
+  lintas-domain tidak bisa diberi gaya langsung dari sisi situs.
+- Preferensi tema disimpan di `localStorage` dengan kunci `agung-pandu-theme`.
 
-## 🪪 Lisensi
+---
 
-MIT © 2026 [Agung Pandu](#kontak)
+## Lisensi
+
+MIT © 2026 Agung Pandu
