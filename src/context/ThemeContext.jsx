@@ -1,14 +1,32 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 
 const ThemeContext = createContext(null);
+const STORAGE_KEY = "agung-pandu-theme";
+
+/* baca preferensi tersimpan sekali saat provider dipasang.
+   try/catch menjaga situs tetap jalan bila localStorage diblokir */
+function getSavedTheme() {
+  try {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved === "light" || saved === "dark") return saved;
+  } catch {
+    /* localStorage tidak tersedia → pakai default gelap */
+  }
+  return "dark";
+}
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(getSavedTheme);
   const [switching, setSwitching] = useState(false);
   const timerRef = useRef(null);
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      /* penyimpanan penuh / diblokir — tema tetap berlaku di sesi ini */
+    }
   }, [theme]);
 
   const toggleTheme = () => {
