@@ -101,7 +101,7 @@ function Layout() {
 
   return (
     <>
-      <div className="grain" aria-hidden="true" />
+      {/* overlay grain dihapus — pola noise-nya terlihat seperti semut */}
 
       {/* Glitch overlay hanya untuk pergantian tema */}
       <GlitchOverlay active={switching} />
